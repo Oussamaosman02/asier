@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function AdminDemo() {
   const [sub, setSub] = useState();
@@ -8,8 +8,11 @@ export default function AdminDemo() {
   const desc = useRef();
   const seleccion = useRef();
 
-  const sendNotificationButtonOnClick = async (e, message) => {
+  useEffect(() => {
     setSub(JSON.parse(localStorage.getItem("subs")));
+  }, []);
+
+  const sendNotificationButtonOnClick = async (e, message) => {
     e.preventDefault();
     const subscription = sub;
     if (subscription == null) {

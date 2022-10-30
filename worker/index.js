@@ -1,6 +1,7 @@
 "use strict";
 
 self.addEventListener("push", function (event) {
+  const URI = "https://asier-webpush-project.vercel.app";
   const data = JSON.parse(event.data.text());
   event.waitUntil(
     registration.showNotification(data.title, {
@@ -10,12 +11,12 @@ self.addEventListener("push", function (event) {
       actions: [
         {
           action: "tarea-action",
-          title: `Ver`,
+          title: "Ver",
           icon: "/icons/ver.png",
         },
       ],
       data: {
-        url: `${process.env.DATA_URL}/demo`,
+        url: `${URI}/demo`,
       },
       vibrate: [
         500, 110, 500, 110, 450, 110, 200, 110, 170, 40, 450, 110, 200, 110,
