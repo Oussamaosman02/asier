@@ -1,0 +1,54 @@
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.calendar {
+  text-align: center;
+  padding: 3%;
+  margin: 0vw auto;
+  width: 90%;
+}
+.calendar ol {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  list-style: none;
+  margin: 0%;
+  padding: 0%;
+}
+.calendar ol li {
+  font-size: 1.5ch;
+}
+.primero {
+  color: red;
+}
+
+.anter {
+  color: gray;
+  opacity: 0.5;
+}
+.examen {
+  border: 1px solid red;
+  position: relative;
+}
+.examen::before {
+  content: "e";
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0;
+}
+.tarea {
+  border: 1px solid brown;
+  position: relative;
+}
+.tarea::after {
+  content: "t";
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0;
+}

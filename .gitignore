@@ -3,8 +3,10 @@ node_modules/
 build/
 .env
 .env.local
-.env*
+*.env*
 vapid.txt
 **/public/workbox-*.js
+**/public/workbox-*.js*
 **/public/sw.js
+**/public/sw.js*
 **/public/worker-*.js

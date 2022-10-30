@@ -1,0 +1,63 @@
+.modal {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #000b;
+  justify-content: flex-start;
+  align-items: center;
+  display: none;
+  transition: all 1s;
+}
+
+.modal:has(span) {
+  transition: all 1s;
+  display: flex;
+}
+
+.modalContainer {
+  position: relative;
+  padding: 1rem 0;
+  width: 50%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: var(--v);
+}
+.modalContainer h1 {
+  width: 74%;
+  text-align: center;
+}
+.modalContainer hr {
+  border: none;
+  border: 1px solid var(--a);
+  position: absolute;
+  top: 7%;
+  width: 100%;
+}
+.modalContainer ul {
+  margin: 2vh 0;
+}
+.modalContainer ul li {
+  width: 100%;
+  text-align: center;
+  margin: 1vh;
+  box-shadow: 0 0 25px -7px green;
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+.modalClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 255, 0, 0.5);
+  border: none;
+  color: var(--a);
+  width: 25%;
+  height: 7%;
+  font-weight: 900;
+  padding: 5px;
+}

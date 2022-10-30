@@ -10,10 +10,13 @@ self.addEventListener("push", function (event) {
       actions: [
         {
           action: "tarea-action",
-          title: "ver Tarea",
+          title: `Ver`,
           icon: "/icons/ver.png",
         },
       ],
+      data: {
+        url: `${process.env.DATA_URL}/demo`,
+      },
       vibrate: [
         500, 110, 500, 110, 450, 110, 200, 110, 170, 40, 450, 110, 200, 110,
         170, 40, 500,
@@ -23,32 +26,21 @@ self.addEventListener("push", function (event) {
   );
 });
 
-self.addEventListener("notificationclick", function (event) {
-  event.notification.close();
-  event.waitUntil(
-    clients
-      .matchAll({ type: "window", includeUncontrolled: true })
-      .then(function (clientList) {
-        if (clientList.length > 0) {
-          let client = clientList[0];
-          for (let i = 0; i < clientList.length; i++) {
-            if (clientList[i].focused) {
-              client = clientList[i];
-            }
-          }
-          return client.focus();
-        }
-        return clients.openWindow("/");
-      })
+self.addEventListener("notificationclick", function (e) {
+  e.notification.close();
+  e.waitUntil(
+    clients.matchAll({ type: "window" }).then((clientsArr) => {
+      // If a Window tab matching the targeted URL already exists, focus that;
+      const hadWindowToFocus = clientsArr.some((windowClient) =>
+        windowClient.url === e.notification.data.url
+          ? (windowClient.focus(), true)
+          : false
+      );
+      // Otherwise, open a new tab to the applicable URL and focus it.
+      if (!hadWindowToFocus)
+        clients
+          .openWindow(e.notification.data.url)
+          .then((windowClient) => (windowClient ? windowClient.focus() : null));
+    })
   );
 });
-
-// self.addEventListener('pushsubscriptionchange', function(event) {
-//   event.waitUntil(
-//       Promise.all([
-//           Promise.resolve(event.oldSubscription ? deleteSubscription(event.oldSubscription) : true),
-//           Promise.resolve(event.newSubscription ? event.newSubscription : subscribePush(registration))
-//               .then(function(sub) { return saveSubscription(sub) })
-//       ])
-//   )
-// })

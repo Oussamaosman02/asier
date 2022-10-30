@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
+import Calendario from "components/Calendario";
+import Examenes from "components/Examenes";
 
 const base64ToUint8Array = (base64) => {
   const padding = "=".repeat((4 - (base64.length % 4)) % 4);
@@ -14,7 +17,8 @@ const base64ToUint8Array = (base64) => {
   return outputArray;
 };
 
-export default function Index() {
+export default function Index({ datos }) {
+  const datoss = datos;
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscription, setSubscription] = useState(null);
   const [registration, setRegistration] = useState(null);
@@ -62,42 +66,45 @@ export default function Index() {
     setSubscription(sub);
     setIsSubscribed(true);
     console.log("web push subscribed!");
-    console.log(sub);
-  };
-
-  const sendNotificationButtonOnClick = async (e) => {
-    e.preventDefault();
-    if (subscription == null) {
-      console.error("web push not subscribed");
-      return;
-    }
-
-    await fetch("/api/notification", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        subscription,
-      }),
-    });
+    const messi = {};
+    messi.endpoint = sub.endpoint;
+    console.log(messi);
+    localStorage.setItem("subs", JSON.stringify(sub));
   };
 
   return (
     <>
-      <Head>
-        <title>ASIeR Ejemplo</title>
-      </Head>
-      <h1>Hola {name} </h1>
       {isSubscribed ? (
-        <button onClick={sendNotificationButtonOnClick}>
-          Notificación de prueba
-        </button>
+        ""
       ) : (
         <button onClick={subscribeButtonOnClick}>
           Quiero recibir Notificaciones
         </button>
       )}
+      <br />
+      <Link href="/demo/admin-demo">
+        <button>Consola</button>
+      </Link>
+      <br />
+      <Calendario datos={datoss} />
+      <br />
+      <h2>Examenes</h2>
+      <Examenes espec="examen" datos={datoss} />
+      <h2>Tareas</h2>
+      <Examenes espec="tarea" datos={datoss} />
+      <h2>Otros avisos</h2>
+      <Examenes espec="otro" datos={datoss} />
     </>
   );
+}
+export async function getServerSideProps(context) {
+  const ruta = process.env.DATA_URL;
+  //const ruta ="http://localhost:3000"
+  const res = await fetch(`${ruta}/api/fake`);
+  const datos = await res.json();
+  return {
+    props: {
+      datos,
+    },
+  };
 }

@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0% 10px;
+}
+.container h2 {
+  text-decoration: underline wavy var(--v) 1px;
+}
+.container h4 {
+  width: 100%;
+  text-align: center;
+}
+.cosa {
+  border: 1px solid var(--v);
+  margin: 1vh auto;
+  box-shadow: 0px 0px 10px -5px var(--n);
+  width: 90%;
+  border-radius: 10px;
+  padding: 5px;
+}
+.fecha {
+  width: fit-content;
+  padding: 2px;
+  border-radius: 10px;
+  margin: 3px auto;
+  text-align: center;
+  background-color: var(--a);
+  color: var(--b);
+  font-weight: 700;
+}

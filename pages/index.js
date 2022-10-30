@@ -23,7 +23,7 @@ export default function Home() {
         <title>ASIeR Ejemplo</title>
       </Head>
       <h1>ASIeR</h1>
-      <h2>lA web/app de ASIR</h2>
+      <h2>La web/app de ASIR</h2>
       <hr />
       <Link href="/demo">
         <button>Demo</button>
