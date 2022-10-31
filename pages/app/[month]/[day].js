@@ -1,14 +1,19 @@
-import handleEvento from "components/funciones/demo/handle";
+import { getDay } from "components/funciones/getAlgo";
+import handleEvento from "components/funciones/handle";
 import Link from "next/link";
 import React from "react";
 import css from "styles/dia.module.css";
-export default function DiaDemo({ data, datos }) {
+
+export default function Dia({ data, datos }) {
+  const year = new Date().getFullYear();
+
   const datoss = datos;
   const datas = data;
-  const year = new Date().getFullYear();
+
   const monthName = new Intl.DateTimeFormat("es", { month: "long" }).format(
     new Date(year, datas.month - 1)
   );
+
   return (
     <div className={css.container}>
       <h1>
@@ -23,23 +28,7 @@ export default function DiaDemo({ data, datos }) {
     </div>
   );
 }
+//recuperamos los datos desde el server
 export async function getServerSideProps({ query }) {
-  const ruta = process.env.DATA_URL;
-  const res = await fetch(`${ruta}/api/fake`);
-  const respu = await res.json();
-
-  const year = new Date().getFullYear();
-
-  const tiempoMas = 86399000;
-  const fechaActual =
-    new Date(year, query.month - 1, query.day).getTime() + tiempoMas;
-  const datos = respu.filter((fec) => fec.fecha === fechaActual);
-  const data = query;
-
-  return {
-    props: {
-      data,
-      datos,
-    },
-  };
+  return await getDay(query);
 }

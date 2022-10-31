@@ -1,22 +1,30 @@
+import getProps from "components/funciones/getprops";
 import Link from "next/link";
 import React from "react";
 import css from "styles/calendar.module.css";
 
-export default function Calendario({ datos }) {
-  const respuesta = datos;
-
+export default function CalendarioP({ datos }) {
+  const respuesta = datos.reverse();
   const actualYear = new Date().getFullYear();
   const actualMonth = new Date().getMonth();
   const actualDay = new Date().getDate();
   const locale = "es";
-  const months = [actualMonth, actualMonth + 1];
+  const months = [
+    actualMonth,
+    actualMonth + 1,
+    actualMonth + 2,
+    actualMonth + 3,
+    actualMonth + 4,
+    actualMonth + 5,
+    actualMonth + 6,
+  ];
   const intl = new Intl.DateTimeFormat(locale, { month: "long" });
   const actualMonthName = (mname) => intl.format(new Date(actualYear, mname));
   const weekdays = [...Array(7).keys()];
   const intlWeekDays = new Intl.DateTimeFormat(locale, { weekday: "short" });
   const weekdaynames = weekdays.map((weekdayIndex) => {
     const weekdayname = intlWeekDays.format(
-      new Date(2023, 4, weekdayIndex + 1)
+      new Date(2024, 0, weekdayIndex + 1)
     );
     return weekdayname;
   });
@@ -36,11 +44,6 @@ export default function Calendario({ datos }) {
       monthkey,
     };
   });
-  function messis(day, index, daysOfMonth, monthname, startsOn) {
-    if (day + 1 == actualDay && monthname === actualMonthName(actualMonth)) {
-      return css.hoy;
-    }
-  }
 
   function clases(day, index, daysOfMonth, monthname, startsOn) {
     let respuesa = [];
@@ -90,7 +93,7 @@ export default function Calendario({ datos }) {
             }
             key={`${monthname}${day}`}
           >
-            <Link href={`/app/${monthkey + 1}/${day + 1}`}>{day + 1}</Link>
+            <Link href={`/${monthkey + 1}/${day + 1}`}>{day + 1}</Link>
           </li>
         ));
         return (
@@ -105,4 +108,8 @@ export default function Calendario({ datos }) {
       })}
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  return await getProps();
 }

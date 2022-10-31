@@ -12,7 +12,7 @@
   transition: all 1s;
 }
 
-.modal:has(span) {
+.modal.isopen {
   transition: all 1s;
   display: flex;
 }
@@ -60,4 +60,8 @@
   height: 7%;
   font-weight: 900;
   padding: 5px;
+}
+
+.link.modalClose {
+  background-color: navajowhite;
 }

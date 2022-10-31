@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
-import Head from "next/head";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import verificar from "../components/funciones/verificar";
+import jsCookie from "js-cookie";
 
 export default function Home() {
   const inpnombre = useRef();
@@ -11,18 +12,19 @@ export default function Home() {
   function handleSubmit() {
     const name = inpnombre.current.value;
     const pass = inpcontra.current.value;
-
-    if (name) {
+    const si = verificar(pass);
+    if (name && si) {
       localStorage.setItem("nombre", name);
-      rut.push("/demo");
+      jsCookie.set("inicio", true);
+      rut.reload();
+    } else if (!name) {
+      alert("No has indicado tu nombre");
+    } else if (!si) {
+      alert("No es esa la contraseña");
     }
   }
   return (
     <>
-      <Head>
-        <title>ASIeR Ejemplo</title>
-      </Head>
-      <h1>ASIeR</h1>
       <h2>La web/app de ASIR</h2>
       <hr />
       <Link href="/demo">
@@ -34,7 +36,7 @@ export default function Home() {
           handleSubmit();
         }}
       >
-        <h3>LogIn</h3>
+        <h3>Log In</h3>
         <div>
           <h4>Nombre</h4>
           <input ref={inpnombre} type="text" placeholder="nombre" />
@@ -43,7 +45,7 @@ export default function Home() {
           <h4>Contraseña</h4>
           <input ref={inpcontra} type="password" placeholder="contraseña" />
         </div>
-        <button>Entrar</button>
+        <button formAction="submit">Entrar</button>
       </form>
     </>
   );

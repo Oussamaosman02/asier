@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import Calendario from "components/funciones/demo/Calendario";
+import Calendario from "components/Calendario";
 import Examenes from "components/Examenes";
-import getProps from "components/funciones/demo/getprops";
+import getProps from "components/funciones/getprops";
 import base64ToUint8Array from "components/funciones/base64";
 
-export default function IndexDemo({ datos }) {
-  const datoss = datos;
+export default function Index({ datos }) {
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [subscription, setSubscription] = useState(null);
   const [registration, setRegistration] = useState(null);
   const [name, setName] = useState();
 
@@ -28,7 +25,6 @@ export default function IndexDemo({ datos }) {
               Date.now() > sub.expirationTime - 5 * 60 * 1000
             )
           ) {
-            setSubscription(sub);
             setIsSubscribed(true);
           }
         });
@@ -50,14 +46,15 @@ export default function IndexDemo({ datos }) {
         process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY
       ),
     });
-    // TODO: you should call your API to save subscription data on server in order to send web push notification from server
-    setSubscription(sub);
     setIsSubscribed(true);
-    console.log("web push subscribed!");
-    const messi = {};
-    messi.endpoint = sub.endpoint;
-    console.log(messi);
-    localStorage.setItem("subs", JSON.stringify(sub));
+    const res = await fetch("/api/mongo/add-e", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(sub),
+    });
+    const data = await res.json();
   };
 
   return (
@@ -70,21 +67,17 @@ export default function IndexDemo({ datos }) {
         </button>
       )}
       <br />
-      <Link href="/demo/admin-demo">
-        <button>Consola</button>
-      </Link>
-      <br />
-      <Calendario datos={datoss} />
+      <Calendario datos={datos} />
       <br />
       <h2>Examenes</h2>
-      <Examenes espec="examen" datos={datoss} />
+      <Examenes espec="examen" datos={datos} />
       <h2>Tareas</h2>
-      <Examenes espec="tarea" datos={datoss} />
+      <Examenes espec="tarea" datos={datos} />
       <h2>Otros avisos</h2>
-      <Examenes espec="otro" datos={datoss} />
+      <Examenes espec="otro" datos={datos} />
     </>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   return await getProps();
 }

@@ -4,7 +4,6 @@ import css from "styles/calendar.module.css";
 
 export default function Calendario({ datos }) {
   const respuesta = datos;
-
   const actualYear = new Date().getFullYear();
   const actualMonth = new Date().getMonth();
   const actualDay = new Date().getDate();
@@ -90,7 +89,7 @@ export default function Calendario({ datos }) {
             }
             key={`${monthname}${day}`}
           >
-            <Link href={`/app/${monthkey + 1}/${day + 1}`}>{day + 1}</Link>
+            <Link href={`/demo/${monthkey + 1}/${day + 1}`}>{day + 1}</Link>
           </li>
         ));
         return (

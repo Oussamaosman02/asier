@@ -3,15 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useModal } from "./funciones/useModal";
 import SideBar from "./SideBar";
 import css from "styles/layout.module.css";
+import Inicio from "../pages";
 export default function Layout({ title, children }) {
   const [name, setName] = useState();
-  useEffect(() => {
-    setName(localStorage.getItem("nombre"));
-  }, [name]);
   const [isOpen, openModal, closeModal] = useModal(false);
   useEffect(() => {
-    closeModal;
-  }, [closeModal]);
+    const local = localStorage.getItem("nombre");
+    setName(local);
+  }, []);
   return (
     <>
       <Head>

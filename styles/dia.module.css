@@ -13,7 +13,7 @@
   width: 100%;
   text-align: center;
 }
-.cosa {
+.rend li {
   border: 1px solid var(--v);
   margin: 1vh auto;
   box-shadow: 0px 0px 10px -5px var(--n);
@@ -21,7 +21,7 @@
   border-radius: 10px;
   padding: 5px;
 }
-.fecha {
+.rend h6 {
   width: fit-content;
   padding: 2px;
   border-radius: 10px;

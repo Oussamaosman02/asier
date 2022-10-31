@@ -1,13 +1,16 @@
+import getProps from "components/funciones/demo/getprops";
 import Link from "next/link";
 import React from "react";
 import css from "styles/calendar.module.css";
 
-export default function CalendarioP({ datos }) {
+export default function CalendarioPDemo({ datos }) {
   const respuesta = datos;
+
   const actualYear = new Date().getFullYear();
   const actualMonth = new Date().getMonth();
   const actualDay = new Date().getDate();
   const locale = "es";
+
   const months = [
     actualMonth,
     actualMonth + 1,
@@ -27,9 +30,11 @@ export default function CalendarioP({ datos }) {
     );
     return weekdayname;
   });
+
   const renderedWeekDays = weekdaynames.map((weekdayname, i) => {
     return <li key={i + weekdayname}>{weekdayname}</li>;
   });
+
   const calendar = months.map((monthkey) => {
     const monthname = intl.format(new Date(actualYear, monthkey));
     const nextMonthIndex = monthkey + 1;
@@ -43,14 +48,9 @@ export default function CalendarioP({ datos }) {
       monthkey,
     };
   });
-  function messis(day, index, daysOfMonth, monthname, startsOn) {
-    if (day + 1 == actualDay && monthname === actualMonthName(actualMonth)) {
-      return css.hoy;
-    }
-  }
 
-  function clases(day, index, daysOfMonth, monthname, startsOn) {
-    let respuesa = "";
+  function clases(day, index, monthname) {
+    let respuesa = [];
     if (index + 1 < actualDay && monthname === actualMonthName(actualMonth)) {
       return css.anter;
     }
@@ -60,21 +60,26 @@ export default function CalendarioP({ datos }) {
         const mes = new Date(res.fecha).getMonth();
         const tipo = res.tipo;
         if (
-          day + 1 == dia &&
+          day + 1 === dia &&
           monthname === actualMonthName(mes) &&
           tipo === "examen"
         ) {
-          respuesa = css.examen;
-        }
-        if (
-          day + 1 == dia &&
+          respuesa.push(css.examen);
+        } else if (
+          day + 1 === dia &&
           monthname === actualMonthName(mes) &&
           tipo === "tarea"
         ) {
-          respuesa = css.tarea;
+          respuesa.push(css.tarea);
+        } else if (
+          day + 1 === dia &&
+          monthname === actualMonthName(mes) &&
+          tipo === "otro"
+        ) {
+          respuesa.push(css.otro);
         }
       });
-      return respuesa;
+      return respuesa.join(" ");
     }
   }
 
@@ -84,11 +89,9 @@ export default function CalendarioP({ datos }) {
         const days = [...Array(daysOfMonth).keys()];
         const renderedDays = days.map((day, i) => (
           <li
-            className={clases(day, i, daysOfMonth, monthname, startsOn)}
+            className={clases(day, i, monthname)}
             style={
-              i === 0
-                ? { gridColumnStart: `${startsOn}` }
-                : { color: "royalblue" }
+              i === 0 ? { gridColumnStart: `${startsOn}` } : { zIndex: "0" }
             }
             key={`${monthname}${day}`}
           >
@@ -110,12 +113,5 @@ export default function CalendarioP({ datos }) {
 }
 
 export async function getServerSideProps() {
-  const ruta = process.env.DATA_URL;
-  const res = await fetch(`${ruta}/api/fake`);
-  const datos = await res.json();
-  return {
-    props: {
-      datos,
-    },
-  };
+  return await getProps();
 }

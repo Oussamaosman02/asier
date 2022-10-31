@@ -1,8 +1,8 @@
-import getProps from "components/funciones/demo/getprops";
-import handleEvento from "components/funciones/demo/handle";
-import React from "react";
+import getProps from "components/funciones/getprops";
+import handleEvento from "components/funciones/handle";
+import React, { Fragment } from "react";
 
-export default function TareasPDemo({ datos }) {
+export default function TareasP({ datos }) {
   const data = datos;
   const datoss = data.sort(function (a, b) {
     if (a.fecha > b.fecha) {

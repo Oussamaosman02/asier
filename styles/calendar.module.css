@@ -30,25 +30,37 @@
   color: gray;
   opacity: 0.5;
 }
-.examen {
-  border: 1px solid red;
+.otro {
   position: relative;
 }
-.examen::before {
-  content: "e";
+
+.otro::after {
+  content: ".";
   position: absolute;
-  color: red;
-  top: 0;
-  left: 0;
+  color: navy;
 }
+
 .tarea {
-  border: 1px solid brown;
+  background-color: orange;
+  color: var(--b);
+  font-weight: 700;
   position: relative;
 }
-.tarea::after {
-  content: "t";
+
+.examen {
+  background-color: #ff4242;
+  color: var(--b);
+  font-weight: 700;
+  position: relative;
+}
+.examen.tarea {
+  background-color: red;
+  position: relative;
+}
+.examen.tarea::before {
   position: absolute;
-  color: red;
+  content: "x2";
   top: 0;
-  left: 0;
+  left: 0%;
+  font-size: 0.5rem;
 }
