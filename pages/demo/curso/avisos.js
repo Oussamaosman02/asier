@@ -1,6 +1,7 @@
 import getProps from "components/funciones/demo/getprops";
 import handleEvento from "components/funciones/demo/handle";
 import React from "react";
+import css from "styles/all.module.css";
 
 export default function AvisosPDemo({ datos }) {
   const data = datos;
@@ -15,7 +16,11 @@ export default function AvisosPDemo({ datos }) {
     return 0;
   });
 
-  return <div>{datoss.map((dat) => handleEvento(dat, "otro"))}</div>;
+  return (
+    <div className={css.container}>
+      {datoss.map((dat) => handleEvento(dat, "otro"))}
+    </div>
+  );
 }
 
 export async function getServerSideProps() {

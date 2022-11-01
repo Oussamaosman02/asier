@@ -3,6 +3,7 @@ import Calendario from "components/Calendario";
 import Examenes from "components/Examenes";
 import getProps from "components/funciones/getprops";
 import base64ToUint8Array from "components/funciones/base64";
+import css from "styles/all.module.css";
 
 export default function Index({ datos }) {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -58,11 +59,11 @@ export default function Index({ datos }) {
   };
 
   return (
-    <>
+    <div className={css.container}>
       {isSubscribed ? (
         ""
       ) : (
-        <button onClick={subscribeButtonOnClick}>
+        <button className={css.but} onClick={subscribeButtonOnClick}>
           Quiero recibir Notificaciones
         </button>
       )}
@@ -75,7 +76,7 @@ export default function Index({ datos }) {
       <Examenes espec="tarea" datos={datos} />
       <h2>Otros avisos</h2>
       <Examenes espec="otro" datos={datos} />
-    </>
+    </div>
   );
 }
 export async function getServerSideProps(context) {

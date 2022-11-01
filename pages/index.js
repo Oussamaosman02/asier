@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import verificar from "../components/funciones/verificar";
 import Cookies from "js-cookie";
+import css from "styles/all.module.css";
 
 export default function Home() {
   const inpnombre = useRef();
@@ -24,29 +25,32 @@ export default function Home() {
     }
   }
   return (
-    <>
+    <div className={css.container}>
       <h2>La web/app de ASIR</h2>
       <hr />
       <Link href="/demo">
-        <button>Demo</button>
+        <button className={css.but}>Demo</button>
       </Link>
       <form
+        className={css.container}
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
       >
         <h3>Log In</h3>
-        <div>
+        <div className={css.container}>
           <h4>Nombre</h4>
           <input ref={inpnombre} type="text" placeholder="nombre" />
         </div>
-        <div>
+        <div className={css.container}>
           <h4>Contraseña</h4>
           <input ref={inpcontra} type="password" placeholder="contraseña" />
         </div>
-        <button formAction="submit">Entrar</button>
+        <button className={css.but} formAction="submit">
+          Entrar
+        </button>
       </form>
-    </>
+    </div>
   );
 }

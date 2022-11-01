@@ -1,6 +1,7 @@
 import getProps from "components/funciones/getprops";
 import handleEvento from "components/funciones/handle";
-import React, { Fragment } from "react";
+import React from "react";
+import css from "styles/all.module.css";
 
 export default function AvisosP({ datos }) {
   const data = datos;
@@ -11,11 +12,14 @@ export default function AvisosP({ datos }) {
     if (a.fecha < b.fecha) {
       return -1;
     }
-    // a must be equal to b
     return 0;
   });
 
-  return <div>{datoss.map((dat) => handleEvento(dat, "otro"))}</div>;
+  return (
+    <div className={css.container}>
+      {datoss.map((dat) => handleEvento(dat, "otro"))}
+    </div>
+  );
 }
 
 export async function getServerSideProps() {

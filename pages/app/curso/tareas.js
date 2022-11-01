@@ -1,6 +1,7 @@
 import getProps from "components/funciones/getprops";
 import handleEvento from "components/funciones/handle";
-import React, { Fragment } from "react";
+import React from "react";
+import css from "styles/all.module.css";
 
 export default function TareasP({ datos }) {
   const data = datos;
@@ -13,8 +14,11 @@ export default function TareasP({ datos }) {
     }
     return 0;
   });
-
-  return <div>{datoss.map((dat) => handleEvento(dat, "tarea"))}</div>;
+  return (
+    <div className={css.container}>
+      {datoss.map((dat) => handleEvento(dat, "tarea"))}
+    </div>
+  );
 }
 
 export async function getServerSideProps() {

@@ -1,6 +1,7 @@
 import getProps from "components/funciones/demo/getprops";
 import handleEvento from "components/funciones/demo/handle";
 import React from "react";
+import css from "styles/all.module.css";
 
 export default function ExamenesPDemo({ datos }) {
   const data = datos;
@@ -14,7 +15,11 @@ export default function ExamenesPDemo({ datos }) {
     return 0;
   });
 
-  return <div>{datoss.map((dat) => handleEvento(dat, "examen"))}</div>;
+  return (
+    <div className={css.container}>
+      {datoss.map((dat) => handleEvento(dat, "examen"))}
+    </div>
+  );
 }
 
 export async function getServerSideProps() {

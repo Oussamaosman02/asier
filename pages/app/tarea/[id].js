@@ -1,6 +1,7 @@
 import { getIdn } from "components/funciones/getAlgo";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+import css from "styles/all.module.css";
 
 export default function Idn({ datos }) {
   const rut = useRouter();
@@ -36,12 +37,13 @@ export default function Idn({ datos }) {
     }
   }
   return (
-    <div>
+    <div className={css.container}>
       <h1>{titulo}</h1>
       <h2>{new Date(fecha).toLocaleDateString()}</h2>
       <p>{descripcion}</p>
       <hr />
       <form
+        className={css.container}
         onSubmit={(e) => {
           e.preventDefault();
           publicar();
@@ -50,6 +52,7 @@ export default function Idn({ datos }) {
         <h4>Añadir comentario</h4>
         <textarea ref={comentario} placeholder="tu comentario va aquí" />
         <button
+          className={css.but}
           onClick={(e) => {
             e.preventDefault();
             publicar();
@@ -59,7 +62,7 @@ export default function Idn({ datos }) {
         </button>
       </form>
       <hr />
-      <ul>
+      <ul className={css.container}>
         {coments.map((com) => {
           return (
             <li key={com.name + "" + com.body}>

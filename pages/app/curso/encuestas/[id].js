@@ -1,11 +1,12 @@
 import { getEncId } from "components/funciones/getAlgo";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
+import css from "styles/all.module.css";
 
 export default function EncuestasL({ datos }) {
   const rut = useRouter();
   const { titulo, descripcion, votos, id } = datos;
-  const [votol, setVotol] = useState(votos);
+  const votol = votos;
   async function handleVote(vot) {
     const nombre = localStorage.getItem("nombre");
     const obj = {
@@ -32,16 +33,17 @@ export default function EncuestasL({ datos }) {
     }
   }
   return (
-    <div key={id}>
+    <div key={id} className={css.container}>
       <h2>{titulo}</h2>
       <p>{descripcion}</p>
       <hr />
       {votol.map((vot) => {
         return (
-          <li key={id + "" + vot.nombre}>
+          <li className={css.container} key={id + "" + vot.nombre}>
             <h4>{vot.nombre}</h4>
             <h5>{vot.votos.length}</h5>
             <button
+              className={css.but}
               onClick={(e) => {
                 e.preventDefault();
                 handleVote(vot);

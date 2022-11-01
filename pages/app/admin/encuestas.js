@@ -1,26 +1,13 @@
-import { map } from "next-pwa/cache";
 import React, { useRef, useState } from "react";
+import css from "styles/all.module.css";
 
 export default function Encuestas() {
   const [enc, setEnc] = useState([]);
   const tit = useRef();
   const desc = useRef();
   const forma = useRef();
-  const [messi, setMessi] = useState([]);
   const num = useRef();
-  const encuesta = {
-    titulo: "Hola",
-    descripcion: "Esta es una descripción corta",
-    votos: [
-      {
-        nombre: "opción uno",
-        votos: ["manu"],
-      },
-      {
-        nombre: "opción dos",
-      },
-    ],
-  };
+
   async function handleSubmit() {
     let algo = [];
     const numer = num.current.valueAsNumber;
@@ -38,7 +25,6 @@ export default function Encuestas() {
         obj.votos.push({ nombre: alg, votos: [] });
       }
     });
-    console.log(obj);
     const res = await fetch("/api/mongo/encuesta", {
       method: "POST",
       headers: {
@@ -48,9 +34,10 @@ export default function Encuestas() {
     });
   }
   return (
-    <div>
+    <div className={css.container}>
       <input ref={num} type="number" />
       <button
+        className={css.but}
         onClick={(e) => {
           e.preventDefault();
           const numeros = num.current.valueAsNumber;
@@ -63,6 +50,7 @@ export default function Encuestas() {
       <h2>Título</h2>
       <form
         ref={forma}
+        className={css.container}
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
@@ -87,6 +75,7 @@ export default function Encuestas() {
         })}
       </form>
       <button
+        className={css.but}
         onClick={(e) => {
           e.preventDefault();
           handleSubmit();

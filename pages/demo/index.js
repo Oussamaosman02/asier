@@ -4,6 +4,7 @@ import Calendario from "components/funciones/demo/Calendario";
 import Examenes from "components/Examenes";
 import getProps from "components/funciones/demo/getprops";
 import base64ToUint8Array from "components/funciones/base64";
+import css from "styles/all.module.css";
 
 export default function IndexDemo({ datos }) {
   const datoss = datos;
@@ -61,17 +62,17 @@ export default function IndexDemo({ datos }) {
   };
 
   return (
-    <>
+    <div className={css.container}>
       {isSubscribed ? (
         ""
       ) : (
-        <button onClick={subscribeButtonOnClick}>
+        <button className={css.but} onClick={subscribeButtonOnClick}>
           Quiero recibir Notificaciones
         </button>
       )}
       <br />
       <Link href="/demo/admin-demo">
-        <button>Consola</button>
+        <button className={css.but}>Consola</button>
       </Link>
       <br />
       <Calendario datos={datoss} />
@@ -82,7 +83,7 @@ export default function IndexDemo({ datos }) {
       <Examenes espec="tarea" datos={datoss} />
       <h2>Otros avisos</h2>
       <Examenes espec="otro" datos={datoss} />
-    </>
+    </div>
   );
 }
 export async function getServerSideProps() {

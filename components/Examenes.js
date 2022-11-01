@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import css from "styles/all.module.css";
 
 export default function Examenes({ datos, espec }) {
   const data = datos.filter((ele) => ele.fecha > new Date().getTime());
@@ -9,7 +10,6 @@ export default function Examenes({ datos, espec }) {
     if (a.fecha < b.fecha) {
       return -1;
     }
-    // a must be equal to b
     return 0;
   });
 
@@ -17,12 +17,12 @@ export default function Examenes({ datos, espec }) {
     const descripcion = dat.descripcion.split("\n");
     if (dat.tipo === espec) {
       return (
-        <li key={dat.fecha + "" + dat.titulo}>
+        <li className={css.container} key={dat.id}>
           <h4>{dat.titulo}</h4>
           <p>
             {descripcion.map((desc, i) => {
               return (
-                <Fragment key={desc + "" + i + "" + dat.titulo}>
+                <Fragment key={desc + "" + i + "" + dat.id}>
                   {desc}
                   <br />
                 </Fragment>
@@ -34,5 +34,7 @@ export default function Examenes({ datos, espec }) {
       );
     }
   }
-  return <div>{datoss.map((dat) => handle(dat))}</div>;
+  return (
+    <div className={css.container}>{datoss.map((dat) => handle(dat))}</div>
+  );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import css from "styles/all.module.css";
 
 export default function AdminDemo() {
   const [sub, setSub] = useState();
@@ -34,13 +35,16 @@ export default function AdminDemo() {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <h1>Admin Demo</h1>
-      <button onClick={(e) => sendNotificationButtonOnClick(e)}>
+      <button
+        className={css.but}
+        onClick={(e) => sendNotificationButtonOnClick(e)}
+      >
         Notificación de prueba
       </button>
       <br />
-      <div>
+      <div className={css.container}>
         <br />
         <input ref={fecha} type="date" />
         <br />
@@ -55,6 +59,7 @@ export default function AdminDemo() {
         </select>
         <br />
         <button
+          className={css.but}
           onClick={(e) => {
             e.preventDefault();
             let obj = {};
@@ -76,7 +81,7 @@ export default function AdminDemo() {
       <br />
       <br />
       <Link href="/demo">
-        <button>demo</button>
+        <button className={css.but}>demo</button>
       </Link>
     </div>
   );

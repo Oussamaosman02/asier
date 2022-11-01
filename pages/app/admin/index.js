@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
+import css from "styles/all.module.css";
 
 export default function Admin() {
   const fecha = useRef();
@@ -9,13 +10,13 @@ export default function Admin() {
   const sendNotificationButtonOnClick = async (e, message) => {
     e.preventDefault();
 
-    // await fetch("/api/mongo/add-t", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(message),
-    // });
+    await fetch("/api/mongo/add-t", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
 
     await fetch("/api/mongo/notify", {
       method: "POST",
@@ -27,9 +28,9 @@ export default function Admin() {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <h1>Admin</h1>
-      <div>
+      <div className={css.container}>
         <br />
         <input ref={fecha} type="date" />
         <br />
@@ -44,6 +45,7 @@ export default function Admin() {
         </select>
         <br />
         <button
+          className={css.but}
           onClick={(e) => {
             e.preventDefault();
             let obj = {};
