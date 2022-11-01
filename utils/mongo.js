@@ -46,3 +46,32 @@ newTareas.set("toJSON", {
 });
 
 export const Tarea = models.Tarea || model("Tarea", newTareas);
+
+const newUsers = new Schema({
+  user: {
+    type: String,
+    unique: true,
+  },
+  key: {
+    type: String,
+    unique: true,
+  },
+});
+
+export const User = models.User || model("User", newUsers);
+
+const newEncuestas = new Schema({
+  titulo: String,
+  descripcion: String,
+  votos: Array,
+});
+
+newEncuestas.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  },
+});
+
+export const Encuesta = models.Encuesta || model("Encuesta", newEncuestas);

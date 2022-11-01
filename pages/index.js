@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import verificar from "../components/funciones/verificar";
-import jsCookie from "js-cookie";
+import Cookies from "js-cookie";
 
 export default function Home() {
   const inpnombre = useRef();
@@ -15,8 +15,8 @@ export default function Home() {
     const si = verificar(pass);
     if (name && si) {
       localStorage.setItem("nombre", name);
-      jsCookie.set("inicio", true);
-      rut.reload();
+      Cookies.set("inicio", true);
+      rut.push("/app");
     } else if (!name) {
       alert("No has indicado tu nombre");
     } else if (!si) {

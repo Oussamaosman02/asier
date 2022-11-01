@@ -19,11 +19,13 @@ export default async function Notify(req, res) {
   console.log("Closed connection, you can't add");
 
   if (req.method == "POST") {
-    const mensaje = req.body;
+    const tiempo = new Date().getTime();
+    const mensaje = JSON.stringify(req.body);
     const message = JSON.parse(mensaje);
     const payload = JSON.stringify({
       title: message.titulo,
       message: message.descripcion,
+      time: message.fecha,
     });
     try {
       respuesta.map(async (subs) => {

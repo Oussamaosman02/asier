@@ -8,9 +8,10 @@ export default function middleware(req) {
   const uri = process.env.DATA_URL;
   if (!verify && url.includes("/app")) {
     return NextResponse.redirect(`${uri}/demo`);
-  } else if (!admins && url.includes("/app/admin")) {
-    return NextResponse.redirect(`${uri}/demo/admin-demo`);
   } else if (verify && url2.pathname === "/") {
     return NextResponse.redirect(`${uri}/app`);
+  }
+  if (!admins && url.includes("/app/admin")) {
+    return NextResponse.redirect(`${uri}/demo/admin-demo`);
   }
 }

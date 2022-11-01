@@ -9,7 +9,8 @@ export default async function getProps() {
   const res = JSON.parse(JSON.stringify(tarea));
   mongoose.connection.close();
   console.log("Closed connection, you can't add");
-  const datos = await res;
+  const datoss = await res;
+  const datos = datoss.filter((ele) => ele.fecha > new Date().getTime());
   return {
     props: {
       datos,

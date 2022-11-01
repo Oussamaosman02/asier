@@ -9,28 +9,26 @@ export default function Admin() {
   const sendNotificationButtonOnClick = async (e, message) => {
     e.preventDefault();
 
-    await fetch("/api/mongo/add-t", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(message),
-    });
+    // await fetch("/api/mongo/add-t", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(message),
+    // });
 
     await fetch("/api/mongo/notify", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        message,
-      }),
+      body: JSON.stringify(message),
     });
   };
 
   return (
     <div>
-      <h1>Admin Demo</h1>
+      <h1>Admin</h1>
       <div>
         <br />
         <input ref={fecha} type="date" />

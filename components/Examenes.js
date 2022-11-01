@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 export default function Examenes({ datos, espec }) {
-  const data = datos;
+  const data = datos.filter((ele) => ele.fecha > new Date().getTime());
   const datoss = data.sort(function (a, b) {
     if (a.fecha > b.fecha) {
       return 1;

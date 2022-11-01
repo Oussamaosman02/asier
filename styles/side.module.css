@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   min-height: 100vh;
-  background-color: #000b;
+  background-color: #000a;
   justify-content: flex-start;
   align-items: center;
   display: none;
@@ -25,7 +25,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  background-color: var(--v);
+  background-color: var(--b);
 }
 .modalContainer h1 {
   width: 74%;
@@ -44,8 +44,8 @@
 .modalContainer ul li {
   width: 100%;
   text-align: center;
-  margin: 1vh;
-  box-shadow: 0 0 25px -7px green;
+  margin: 1vh 0;
+  box-shadow: 0 0 10px -7px var(--n);
   font-weight: 900;
   font-size: 1.25rem;
 }
@@ -53,7 +53,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: rgba(0, 255, 0, 0.5);
+  background-color: var(--n);
+  color: var(--b);
   border: none;
   color: var(--a);
   width: 25%;

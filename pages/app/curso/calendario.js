@@ -93,7 +93,7 @@ export default function CalendarioP({ datos }) {
             }
             key={`${monthname}${day}`}
           >
-            <Link href={`/${monthkey + 1}/${day + 1}`}>{day + 1}</Link>
+            <Link href={`/app/${monthkey + 1}/${day + 1}`}>{day + 1}</Link>
           </li>
         ));
         return (

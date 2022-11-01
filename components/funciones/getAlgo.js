@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { mongoConn, Tarea } from "utils/mongo";
+import { mongoConn, Tarea, Encuesta } from "utils/mongo";
 
 export async function getIdn(query) {
   console.log("Connecting for adding");
@@ -38,6 +38,38 @@ export async function getDay(query) {
   return {
     props: {
       data,
+      datos,
+    },
+  };
+}
+
+export async function getEncuesta() {
+  console.log("Connecting for adding");
+  await mongoConn();
+  console.log("Connected, you can add");
+  const encuesta = await Encuesta.find({});
+  const res = JSON.parse(JSON.stringify(encuesta));
+  mongoose.connection.close();
+  console.log("Closed connection, you can't add");
+  const datos = await res;
+  return {
+    props: {
+      datos,
+    },
+  };
+}
+
+export async function getEncId(query) {
+  console.log("Connecting for adding");
+  await mongoConn();
+  console.log("Connected, you can add");
+  const encuesta = await Encuesta.find({});
+  const res = JSON.parse(JSON.stringify(encuesta));
+  mongoose.connection.close();
+  console.log("Closed connection, you can't add");
+  const datos = await res.find((ele) => ele.id === query.id);
+  return {
+    props: {
       datos,
     },
   };

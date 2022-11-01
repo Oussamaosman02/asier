@@ -2,6 +2,15 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 export default function handleEvento(dat, tipo) {
+  function numero(algo) {
+    if (algo > 1) {
+      return `${algo} comentarios`;
+    } else if (algo > 0 && algo < 2) {
+      return `1 comentario`;
+    } else {
+      return `No hay comentarios`;
+    }
+  }
   const descripcion = dat.descripcion.split(".  ");
   if (dat.tipo === tipo) {
     return (
@@ -18,7 +27,7 @@ export default function handleEvento(dat, tipo) {
               );
             })}
           </p>
-          <h5>Hay {dat.coments.length} comentarios</h5>
+          <h5>{numero(dat.coments.length)}</h5>
           <h6>{new Date(dat.fecha).toLocaleDateString()}</h6>
         </li>
       </Link>
@@ -38,7 +47,7 @@ export default function handleEvento(dat, tipo) {
               );
             })}
           </p>
-          <h5>Hay {dat.coments.length} comentarios</h5>
+          <h5>{numero(dat.coments.length)}</h5>
           <h6>{new Date(dat.fecha).toLocaleDateString()}</h6>
         </li>
       </Link>

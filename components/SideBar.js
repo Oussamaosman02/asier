@@ -40,6 +40,12 @@ export default function SideBar({ isOpen, closeModal }) {
           <li onClick={(e) => closeAlgo(e)}>
             <Link href="/app/curso/tareas">Tareas</Link>
           </li>
+          <li onClick={(e) => closeAlgo(e)}>
+            <Link href="/app/control/create/one/administrator">Control</Link>
+          </li>
+          <li onClick={(e) => closeAlgo(e)}>
+            <Link href="/app/curso/encuestas">Encuesta</Link>
+          </li>
         </ul>
         <br />
         <ul>

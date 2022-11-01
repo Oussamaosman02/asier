@@ -23,6 +23,7 @@ self.addEventListener("push", function (event) {
         170, 40, 500,
       ],
       requireInteraction: true,
+      timestamp: data.time,
     })
   );
 });

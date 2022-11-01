@@ -58,6 +58,7 @@ export default function Idn({ datos }) {
           Publicar
         </button>
       </form>
+      <hr />
       <ul>
         {coments.map((com) => {
           return (
