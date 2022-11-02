@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import Calendario from "components/funciones/demo/Calendario";
-import Examenes from "components/Examenes";
-import getProps from "components/funciones/demo/getprops";
-import base64ToUint8Array from "components/funciones/base64";
-import css from "styles/all.module.css";
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import Calendario from 'components/funciones/demo/Calendario'
+import Examenes from 'components/Examenes'
+import getProps from 'components/funciones/demo/getprops'
+import base64ToUint8Array from 'components/funciones/base64'
+import css from 'styles/all.module.css'
 
-export default function IndexDemo({ datos }) {
-  const datoss = datos;
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [subscription, setSubscription] = useState(null);
-  const [registration, setRegistration] = useState(null);
-  const [name, setName] = useState();
+export default function IndexDemo ({ datos }) {
+  const datoss = datos
+  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [subscription, setSubscription] = useState(null)
+  const [registration, setRegistration] = useState(null)
+  const [name, setName] = useState()
 
   useEffect(() => {
     if (
-      typeof window !== "undefined" &&
-      "serviceWorker" in navigator &&
+      typeof window !== 'undefined' &&
+      'serviceWorker' in navigator &&
       window.workbox !== undefined
     ) {
       // run only in browser
@@ -29,63 +29,65 @@ export default function IndexDemo({ datos }) {
               Date.now() > sub.expirationTime - 5 * 60 * 1000
             )
           ) {
-            setSubscription(sub);
-            setIsSubscribed(true);
+            setSubscription(sub)
+            setIsSubscribed(true)
           }
-        });
-        setRegistration(reg);
-      });
+        })
+        setRegistration(reg)
+      })
     }
-  }, []);
+  }, [])
 
-  //read the name from localStorage
+  // read the name from localStorage
   useEffect(() => {
-    setName(localStorage.getItem("nombre"));
-  }, [name]);
+    setName(localStorage.getItem('nombre'))
+  }, [name])
 
   const subscribeButtonOnClick = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: base64ToUint8Array(
         process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY
-      ),
-    });
+      )
+    })
     // TODO: you should call your API to save subscription data on server in order to send web push notification from server
-    setSubscription(sub);
-    setIsSubscribed(true);
-    console.log("web push subscribed!");
-    const messi = {};
-    messi.endpoint = sub.endpoint;
-    console.log(messi);
-    localStorage.setItem("subs", JSON.stringify(sub));
-  };
+    setSubscription(sub)
+    setIsSubscribed(true)
+    console.log('web push subscribed!')
+    const messi = {}
+    messi.endpoint = sub.endpoint
+    console.log(messi)
+    localStorage.setItem('subs', JSON.stringify(sub))
+  }
 
   return (
     <div className={css.container}>
-      {isSubscribed ? (
-        ""
-      ) : (
-        <button className={css.but} onClick={subscribeButtonOnClick}>
-          Quiero recibir Notificaciones
-        </button>
-      )}
+      {isSubscribed
+        ? (
+            ''
+          )
+        : (
+          <button className={css.but} onClick={subscribeButtonOnClick}>
+            Quiero recibir Notificaciones
+          </button>
+          )}
       <br />
-      <Link href="/demo/admin-demo">
+      <Link href='/demo/admin-demo'>
         <button className={css.but}>Consola</button>
       </Link>
       <br />
       <Calendario datos={datoss} />
       <br />
       <h2>Examenes</h2>
-      <Examenes espec="examen" datos={datoss} />
+      <Examenes espec='examen' datos={datoss} />
       <h2>Tareas</h2>
-      <Examenes espec="tarea" datos={datoss} />
+      <Examenes espec='tarea' datos={datoss} />
       <h2>Otros avisos</h2>
-      <Examenes espec="otro" datos={datoss} />
+      <Examenes espec='otro' datos={datoss} />
     </div>
-  );
+  )
 }
-export async function getServerSideProps() {
-  return await getProps();
+export async function getServerSideProps () {
+  return await getProps()
 }

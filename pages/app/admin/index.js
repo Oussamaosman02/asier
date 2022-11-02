@@ -1,61 +1,61 @@
-import React, { useRef } from "react";
-import css from "styles/all.module.css";
+import React, { useRef } from 'react'
+import css from 'styles/all.module.css'
 
-export default function Admin() {
-  const fecha = useRef();
-  const titulo = useRef();
-  const desc = useRef();
-  const seleccion = useRef();
+export default function Admin () {
+  const fecha = useRef()
+  const titulo = useRef()
+  const desc = useRef()
+  const seleccion = useRef()
 
   const sendNotificationButtonOnClick = async (e, message) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    await fetch("/api/mongo/add-t", {
-      method: "POST",
+    await fetch('/api/mongo/add-t', {
+      method: 'POST',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json'
       },
-      body: JSON.stringify(message),
-    });
+      body: JSON.stringify(message)
+    })
 
-    await fetch("/api/mongo/notify", {
-      method: "POST",
+    await fetch('/api/mongo/notify', {
+      method: 'POST',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json'
       },
-      body: JSON.stringify(message),
-    });
-  };
+      body: JSON.stringify(message)
+    })
+  }
 
   return (
     <div className={css.container}>
       <h1>Admin</h1>
       <div className={css.container}>
         <br />
-        <input ref={fecha} type="date" />
+        <input ref={fecha} type='date' />
         <br />
-        <input ref={titulo} type="text" placeholder="Título" />
+        <input ref={titulo} type='text' placeholder='Título' />
         <br />
-        <textarea ref={desc} placeholder="Descripción" />
+        <textarea ref={desc} placeholder='Descripción' />
         <br />
         <select ref={seleccion}>
-          <option value="tarea">Tarea</option>
-          <option value="examen">Examen</option>
-          <option value="otro">Otro</option>
+          <option value='tarea'>Tarea</option>
+          <option value='examen'>Examen</option>
+          <option value='otro'>Otro</option>
         </select>
         <br />
         <button
           className={css.but}
           onClick={(e) => {
-            e.preventDefault();
-            let obj = {};
-            obj.fecha = fecha.current.valueAsNumber + 82799000;
-            obj.fechaString = fecha.current.value;
-            obj.titulo = titulo.current.value;
-            obj.descripcion = desc.current.value.replace("\n", ".  ");
-            obj.tipo = seleccion.current.value;
-            obj.coments = [];
-            sendNotificationButtonOnClick(e, obj);
+            e.preventDefault()
+            const obj = {}
+            obj.fecha = fecha.current.valueAsNumber + 82799000
+            obj.fechaString = fecha.current.value
+            obj.titulo = titulo.current.value
+            obj.descripcion = desc.current.value.replace('\n', '.  ')
+            obj.tipo = seleccion.current.value
+            obj.coments = []
+            sendNotificationButtonOnClick(e, obj)
           }}
         >
           Mandar
@@ -63,5 +63,5 @@ export default function Admin() {
         <br />
       </div>
     </div>
-  );
+  )
 }

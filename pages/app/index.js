@@ -34,7 +34,7 @@ export default function Index({ datos }) {
     }
   }, []);
 
-  //read the name from localStorage
+  // read the name from localStorage
   useEffect(() => {
     setName(localStorage.getItem("nombre"));
   }, [name]);
@@ -55,7 +55,7 @@ export default function Index({ datos }) {
       },
       body: JSON.stringify(sub),
     });
-    const data = await res.json();
+    await res.json();
   };
 
   return (

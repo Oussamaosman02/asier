@@ -1,8 +1,8 @@
-export default function verificar(passwd) {
-  const contra = "OscarIPV6";
+export default function verificar (passwd) {
+  const contra = 'OscarIPV6'
   if (passwd === contra) {
-    return true;
+    return true
   } else {
-    return false;
+    return false
   }
 }

@@ -1,12 +1,12 @@
-import Layout from "components/Layout";
-import "../styles/globals.css";
+import Layout from 'components/Layout'
+import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
+function MyApp ({ Component, pageProps }) {
   return (
-    <Layout title="ASIeR">
+    <Layout title='ASIeR'>
       <Component {...pageProps} />
     </Layout>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
