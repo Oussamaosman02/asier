@@ -1,30 +1,25 @@
+import getProps from 'components/funciones/getprops'
 import { useEffect, useState } from 'react'
+import base64ToUint8Array from 'components/funciones/base64'
 import Calendario from 'components/Calendario'
 import Examenes from 'components/Examenes'
-import getProps from 'components/funciones/getprops'
-import base64ToUint8Array from 'components/funciones/base64'
 import css from 'styles/all.module.css'
 
 export default function Index ({ datos }) {
   const [isSubscribed, setIsSubscribed] = useState(false)
+  // para saber si el sw está en el navegador
   const [registration, setRegistration] = useState(null)
-  const [name, setName] = useState()
 
   useEffect(() => {
     if (
       typeof window !== 'undefined' &&
-      'serviceWorker' in navigator &&
-      window.workbox !== undefined
+      'serviceWorker' in navigator
     ) {
-      // run only in browser
+      // solo funciona en el navegador
       navigator.serviceWorker.ready.then(reg => {
         reg.pushManager.getSubscription().then(sub => {
           if (
-            sub &&
-            !(
-              sub.expirationTime &&
-              Date.now() > sub.expirationTime - 5 * 60 * 1000
-            )
+            sub
           ) {
             setIsSubscribed(true)
           }
@@ -34,20 +29,13 @@ export default function Index ({ datos }) {
     }
   }, [])
 
-  // read the name from localStorage
-  useEffect(() => {
-    setName(localStorage.getItem('nombre'))
-  }, [name])
-
-  const subscribeButtonOnClick = async e => {
-    e.preventDefault()
+  async function subscribeButtonOnClick () {
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: base64ToUint8Array(
         process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY
       )
     })
-    setIsSubscribed(true)
     const res = await fetch('/api/mongo/add-e', {
       method: 'POST',
       headers: {
@@ -56,16 +44,22 @@ export default function Index ({ datos }) {
       body: JSON.stringify(sub)
     })
     await res.json()
+    setIsSubscribed(true)
   }
 
   return (
     <div className={css.container}>
-      {isSubscribed
+      {!registration && isSubscribed
         ? (
             ''
           )
         : (
-          <button className={css.but} onClick={subscribeButtonOnClick}>
+          <button
+            className={css.but} onClick={(e) => {
+              e.preventDefault()
+              subscribeButtonOnClick()
+            }}
+          >
             Quiero recibir Notificaciones
           </button>
           )}
@@ -81,6 +75,6 @@ export default function Index ({ datos }) {
     </div>
   )
 }
-export async function getServerSideProps (context) {
+export async function getServerSideProps () {
   return await getProps()
 }

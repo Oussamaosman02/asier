@@ -1,6 +1,5 @@
 import { getEncuesta } from 'components/funciones/getAlgo'
 import Link from 'next/link'
-import React from 'react'
 import css from 'styles/all.module.css'
 
 export default function EncuestasL ({ datos }) {
@@ -14,7 +13,9 @@ export default function EncuestasL ({ datos }) {
             <h3>{dat.titulo}</h3>
             <p>{dat.descripcion}</p>
             <Link href={`/app/curso/encuestas/${dat.id}`}>
-              <button className={css.but}>Ir a votar</button>
+              <a>
+                <button className={css.but}>Ir a votar</button>
+              </a>
             </Link>
           </div>
         )

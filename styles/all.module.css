@@ -17,3 +17,28 @@
   font-weight: 700;
   border: none;
 }
+
+.but:hover {
+  background-color: var(--a);
+}
+
+/*month/day*/
+
+.rend li {
+  border: 1px solid var(--v);
+  margin: 1vh auto;
+  box-shadow: 0px 0px 10px -5px var(--n);
+  width: 90%;
+  border-radius: 10px;
+  padding: 5px;
+}
+.rend h6 {
+  width: fit-content;
+  padding: 2px;
+  border-radius: 10px;
+  margin: 3px auto;
+  text-align: center;
+  background-color: var(--a);
+  color: var(--b);
+  font-weight: 700;
+}

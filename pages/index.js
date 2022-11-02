@@ -47,7 +47,7 @@ export default function Home () {
           <h4>Contraseña</h4>
           <input ref={inpcontra} type='password' placeholder='contraseña' />
         </div>
-        <button className={css.but} formAction='submit'>
+        <button className={css.but}>
           Entrar
         </button>
       </form>

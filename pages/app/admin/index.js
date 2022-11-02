@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import css from 'styles/all.module.css'
 
 export default function Admin () {
@@ -7,15 +7,21 @@ export default function Admin () {
   const desc = useRef()
   const seleccion = useRef()
 
-  const sendNotificationButtonOnClick = async (e, message) => {
-    e.preventDefault()
+  async function sendNotificationButtonOnClick () {
+    const obj = {}
+    obj.fecha = fecha.current.valueAsNumber + 82799000
+    obj.fechaString = fecha.current.value
+    obj.titulo = titulo.current.value
+    obj.descripcion = desc.current.value.replace('\n', '.  ')
+    obj.tipo = seleccion.current.value
+    obj.coments = []
 
     await fetch('/api/mongo/add-t', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(message)
+      body: JSON.stringify(obj)
     })
 
     await fetch('/api/mongo/notify', {
@@ -23,45 +29,35 @@ export default function Admin () {
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(message)
+      body: JSON.stringify(obj)
     })
   }
 
   return (
     <div className={css.container}>
       <h1>Admin</h1>
-      <div className={css.container}>
-        <br />
-        <input ref={fecha} type='date' />
-        <br />
-        <input ref={titulo} type='text' placeholder='Título' />
-        <br />
-        <textarea ref={desc} placeholder='Descripción' />
-        <br />
-        <select ref={seleccion}>
-          <option value='tarea'>Tarea</option>
-          <option value='examen'>Examen</option>
-          <option value='otro'>Otro</option>
-        </select>
-        <br />
-        <button
-          className={css.but}
-          onClick={e => {
-            e.preventDefault()
-            const obj = {}
-            obj.fecha = fecha.current.valueAsNumber + 82799000
-            obj.fechaString = fecha.current.value
-            obj.titulo = titulo.current.value
-            obj.descripcion = desc.current.value.replace('\n', '.  ')
-            obj.tipo = seleccion.current.value
-            obj.coments = []
-            sendNotificationButtonOnClick(e, obj)
-          }}
-        >
-          Mandar
-        </button>
-        <br />
-      </div>
+      <br />
+      <input ref={fecha} type='date' />
+      <br />
+      <input ref={titulo} type='text' placeholder='Título' />
+      <br />
+      <textarea ref={desc} placeholder='Descripción' />
+      <br />
+      <select ref={seleccion}>
+        <option value='tarea'>Tarea</option>
+        <option value='examen'>Examen</option>
+        <option value='otro'>Otro</option>
+      </select>
+      <br />
+      <button
+        className={css.but}
+        onClick={e => {
+          e.preventDefault()
+          sendNotificationButtonOnClick()
+        }}
+      >
+        Mandar
+      </button>
     </div>
   )
 }

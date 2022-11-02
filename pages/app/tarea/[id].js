@@ -1,16 +1,16 @@
+import { useEffect, useRef, useState } from 'react'
 import { getIdn } from 'components/funciones/getAlgo'
 import { useRouter } from 'next/router'
-import React, { useEffect, useRef, useState } from 'react'
 import css from 'styles/all.module.css'
 
 export default function Idn ({ datos }) {
-  const rut = useRouter()
-  const [name, setName] = useState()
-  const comentario = useRef()
   const { fecha, fechaString, titulo, descripcion, coments, id } = datos
+  const [name, setName] = useState()
   useEffect(() => {
     setName(localStorage.getItem('nombre'))
   }, [])
+  const rut = useRouter()
+  const comentario = useRef()
   async function publicar () {
     const texto = comentario.current.value.replace('\n', '.  ')
     const obj = {}
@@ -19,6 +19,7 @@ export default function Idn ({ datos }) {
     obj.titulo = titulo
     obj.descripcion = descripcion
     obj.coments = coments
+    // objeto de los nuevos comentarios
     const nuevo = {}
     nuevo.name = name
     nuevo.body = texto
@@ -39,28 +40,20 @@ export default function Idn ({ datos }) {
   return (
     <div className={css.container}>
       <h1>{titulo}</h1>
-      <h2>{new Date(fecha).toLocaleDateString()}</h2>
+      <h2>{fechaString}</h2>
       <p>{descripcion}</p>
       <hr />
-      <form
-        className={css.container}
-        onSubmit={e => {
+      <h4>Añadir comentario</h4>
+      <textarea ref={comentario} placeholder='tu comentario va aquí' />
+      <button
+        className={css.but}
+        onClick={e => {
           e.preventDefault()
           publicar()
         }}
       >
-        <h4>Añadir comentario</h4>
-        <textarea ref={comentario} placeholder='tu comentario va aquí' />
-        <button
-          className={css.but}
-          onClick={e => {
-            e.preventDefault()
-            publicar()
-          }}
-        >
-          Publicar
-        </button>
-      </form>
+        Publicar
+      </button>
       <hr />
       <ul className={css.container}>
         {coments.map(com => {

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
 import { mongoConn, Tarea } from 'utils/mongo'
+import mongoose from 'mongoose'
 
 export default async function getProps () {
   console.log('Connecting for getting info')
@@ -9,8 +9,7 @@ export default async function getProps () {
   const res = JSON.parse(JSON.stringify(tarea))
   mongoose.connection.close()
   console.log('Closed connection, info getted!!')
-  const datoss = await res
-  const datos = datoss.filter(ele => ele.fecha > new Date().getTime())
+  const datos = await res.filter(ele => ele.fecha > new Date().getTime())
   return {
     props: {
       datos

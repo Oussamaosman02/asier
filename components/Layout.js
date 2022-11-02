@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useModal } from './funciones/useModal'
 import SideBar from './SideBar'
-import css from 'styles/layout.module.css'
 import Cookies from 'js-cookie'
-export default function Layout ({ title, children }) {
+import Head from 'next/head'
+import css from 'styles/layout.module.css'
+export default function Layout ({ children }) {
   const [name, setName] = useState()
   const [isOpen, openModal, closeModal] = useModal(false)
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function Layout ({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>ASIeR</title>
       </Head>
       <div className={css.all}>
         <header>

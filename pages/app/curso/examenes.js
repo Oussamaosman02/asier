@@ -1,6 +1,5 @@
 import getProps from 'components/funciones/getprops'
 import handleEvento from 'components/funciones/handle'
-import React from 'react'
 import css from 'styles/all.module.css'
 
 export default function ExamenesP ({ datos }) {
@@ -14,7 +13,6 @@ export default function ExamenesP ({ datos }) {
     }
     return 0
   })
-
   return (
     <div className={css.container}>
       {datoss.map(dat => handleEvento(dat, 'examen'))}

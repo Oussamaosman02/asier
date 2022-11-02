@@ -1,6 +1,5 @@
 import { getEncId } from 'components/funciones/getAlgo'
 import { useRouter } from 'next/router'
-import React from 'react'
 import css from 'styles/all.module.css'
 
 export default function EncuestasL ({ datos }) {
@@ -16,7 +15,7 @@ export default function EncuestasL ({ datos }) {
     }
     const existe = vot.votos.find(el => el === nombre)
     if (!existe && nombre) {
-      alert('ya has votado!')
+      alert('¡Has votado correctamente!')
       vot.votos.push(nombre)
       await fetch(`/api/mongo/encuesta/up/${id}`, {
         method: 'POST',
@@ -27,9 +26,9 @@ export default function EncuestasL ({ datos }) {
       })
       rut.reload()
     } else if (existe) {
-      alert('ya has votado esta opción')
+      alert('¡¡¡Solo se puede votar UNA VEZ!!!')
     } else if (!nombre) {
-      alert('No has actualizado tu nombre, no se quien eres')
+      alert('No sé quién eres...')
     }
   }
   return (
@@ -49,7 +48,7 @@ export default function EncuestasL ({ datos }) {
                 handleVote(vot)
               }}
             >
-              Votar
+              Votar!
             </button>
           </li>
         )

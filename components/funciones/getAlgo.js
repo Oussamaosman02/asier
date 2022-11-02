@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
 import { mongoConn, Tarea, Encuesta } from 'utils/mongo'
+import mongoose from 'mongoose'
 
 export async function getIdn (query) {
   console.log('Connecting for getting id')
@@ -9,7 +9,7 @@ export async function getIdn (query) {
   const res = JSON.parse(JSON.stringify(tarea))
   mongoose.connection.close()
   console.log('Closed connection, everything get')
-  const datos = res.find(ele => ele.id === query.id)
+  const datos = await res.find(ele => ele.id === query.id)
   return {
     props: {
       datos
@@ -25,7 +25,6 @@ export async function getDay (query) {
   const res = JSON.parse(JSON.stringify(tarea))
   mongoose.connection.close()
   console.log('Closed connection, day info getted')
-  const respu = await res
 
   const year = new Date().getFullYear()
   const tiempoMas = 86399000
@@ -33,7 +32,7 @@ export async function getDay (query) {
     new Date(year, query.month - 1, query.day).getTime() + tiempoMas
 
   // datos que devuelve
-  const datos = respu.filter(fec => fec.fecha === fechaActual)
+  const datos = await res.filter(fec => fec.fecha === fechaActual)
   const data = query
   return {
     props: {

@@ -1,12 +1,12 @@
-import Cookies from 'js-cookie'
+import { useRef } from 'react'
 import { useRouter } from 'next/router'
-import React, { useRef } from 'react'
+import Cookies from 'js-cookie'
 import css from 'styles/all.module.css'
 
 export default function Administrator () {
-  const rut = useRouter()
   const usuario = useRef()
   const key = useRef()
+  const rut = useRouter()
   async function handleSubmit () {
     const user = usuario.current.value
     const clave = key.current.value
@@ -25,6 +25,7 @@ export default function Administrator () {
       } else if (prob.exit) {
         Cookies.set('admin', true)
         rut.push('/app')
+        alert(`Bienvenido ${user}`)
       }
     } else if (!user) {
       alert('debes indicar un usuario')
@@ -46,7 +47,6 @@ export default function Administrator () {
           e.preventDefault()
           handleSubmit()
         }}
-        formAction='submit'
       >
         Entrar
       </button>

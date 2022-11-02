@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import css from 'styles/all.module.css'
 
 export default function Encuestas () {
@@ -12,13 +12,20 @@ export default function Encuestas () {
     const algo = []
     const numer = num.current.valueAsNumber
     const iterar = [...Array(numer + 2).keys()]
-    const from = forma.current
-    iterar.map(num => algo.push(from[num].value)
+    // con iterar sacamos un array con dos valores
+    // más que en el número, debido al título
+    // y la descripción
+    const form = forma.current
+    iterar.map(num => algo.push(form[num].value)
     )
     const obj = {}
     obj.titulo = algo[0]
     obj.descripcion = algo[1]
     obj.votos = []
+    // damos la vuelta al array para
+    // solo obtener los valores de
+    // los nuevos inputs, es decir,
+    // las opciones
     algo.reverse().map((alg, i) => {
       if (i < numer) {
         return obj.votos.push({ nombre: alg, votos: [] })
@@ -48,7 +55,6 @@ export default function Encuestas () {
         Añadir Opciones
       </button>
       <h1>Encuestas</h1>
-      <h2>Título</h2>
       <form
         ref={forma}
         className={css.container}
@@ -57,6 +63,7 @@ export default function Encuestas () {
           handleSubmit()
         }}
       >
+        <h2>Título</h2>
         <input ref={tit} type='text' placeholder='titulo' />
         <h3>descripción</h3>
         <textarea ref={desc} placeholder='Descripción breve' />
@@ -82,7 +89,7 @@ export default function Encuestas () {
           handleSubmit()
         }}
       >
-        Submit
+        Crear
       </button>
     </div>
   )

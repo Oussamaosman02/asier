@@ -1,7 +1,6 @@
 import handleEvento from 'components/funciones/demo/handle'
 import Link from 'next/link'
-import React from 'react'
-import css from 'styles/dia.module.css'
+import css from 'styles/all.module.css'
 export default function DiaDemo ({ data, datos }) {
   const datoss = datos
   const datas = data
@@ -18,7 +17,9 @@ export default function DiaDemo ({ data, datos }) {
       <h2>Eventos</h2>
       <div className={css.rend}>{datoss.map(dat => handleEvento(dat))}</div>
       <Link href='/demo'>
-        <button>Volver</button>
+        <a>
+          <button className={css.but}>Volver</button>
+        </a>
       </Link>
     </div>
   )
