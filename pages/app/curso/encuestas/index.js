@@ -8,7 +8,7 @@ export default function EncuestasL ({ datos }) {
   return (
     <div className={css.container}>
       <h1>Encuestas</h1>
-      {data.map((dat) => {
+      {data.map(dat => {
         return (
           <div key={dat.id} className={css.container}>
             <h3>{dat.titulo}</h3>

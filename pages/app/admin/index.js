@@ -46,7 +46,7 @@ export default function Admin () {
         <br />
         <button
           className={css.but}
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault()
             const obj = {}
             obj.fecha = fecha.current.valueAsNumber + 82799000

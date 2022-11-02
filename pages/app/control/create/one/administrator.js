@@ -42,7 +42,7 @@ export default function Administrator () {
       <br />
       <button
         className={css.but}
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault()
           handleSubmit()
         }}

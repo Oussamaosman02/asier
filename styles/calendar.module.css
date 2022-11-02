@@ -35,7 +35,7 @@
 }
 
 .otro::after {
-  content: ".";
+  content: '.';
   position: absolute;
   color: navy;
 }
@@ -59,7 +59,7 @@
 }
 .examen.tarea::before {
   position: absolute;
-  content: "x2";
+  content: 'x2';
   top: 0;
   left: 0%;
   font-size: 0.5rem;

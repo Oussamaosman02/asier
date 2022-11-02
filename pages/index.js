@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import verificar from '../components/funciones/verificar'
@@ -33,7 +33,7 @@ export default function Home () {
       </Link>
       <form
         className={css.container}
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault()
           handleSubmit()
         }}

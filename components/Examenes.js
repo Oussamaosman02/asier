@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import css from 'styles/all.module.css'
 
 export default function Examenes ({ datos, espec }) {
-  const data = datos.filter((ele) => ele.fecha > new Date().getTime())
+  const data = datos.filter(ele => ele.fecha > new Date().getTime())
   const datoss = data.sort(function (a, b) {
     if (a.fecha > b.fecha) {
       return 1
@@ -34,7 +34,5 @@ export default function Examenes ({ datos, espec }) {
       )
     }
   }
-  return (
-    <div className={css.container}>{datoss.map((dat) => handle(dat))}</div>
-  )
+  return <div className={css.container}>{datoss.map(dat => handle(dat))}</div>
 }

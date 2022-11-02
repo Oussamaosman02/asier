@@ -14,11 +14,11 @@ export default function EncuestasL ({ datos }) {
       descripcion,
       votos: votol
     }
-    const existe = vot.votos.find((el) => el === nombre)
+    const existe = vot.votos.find(el => el === nombre)
     if (!existe && nombre) {
       alert('ya has votado!')
       vot.votos.push(nombre)
-      const res = await fetch(`/api/mongo/encuesta/up/${id}`, {
+      await fetch(`/api/mongo/encuesta/up/${id}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
@@ -37,14 +37,14 @@ export default function EncuestasL ({ datos }) {
       <h2>{titulo}</h2>
       <p>{descripcion}</p>
       <hr />
-      {votol.map((vot) => {
+      {votol.map(vot => {
         return (
           <li className={css.container} key={id + '' + vot.nombre}>
             <h4>{vot.nombre}</h4>
             <h5>{vot.votos.length}</h5>
             <button
               className={css.but}
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault()
                 handleVote(vot)
               }}

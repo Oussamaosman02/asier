@@ -10,7 +10,7 @@ export default function IdnDemo ({ datos }) {
       <p>{descripcion}</p>
       <hr />
       <ul className={css.container}>
-        {coments.map((com) => {
+        {coments.map(com => {
           return (
             <li key={com.id}>
               <h4>{com.name}</h4>
@@ -27,7 +27,7 @@ export async function getServerSideProps ({ query }) {
   const ruta = process.env.DATA_URL
   const res = await fetch(`${ruta}/api/fake`)
   const respu = await res.json()
-  const datos = respu.find((ele) => ele.id === JSON.parse(query.id))
+  const datos = respu.find(ele => ele.id === JSON.parse(query.id))
   return {
     props: {
       datos

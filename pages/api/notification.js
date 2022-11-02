@@ -7,7 +7,7 @@ webPush.setVapidDetails(
 )
 
 const Notification = (req, res) => {
-  if (req.method == 'POST') {
+  if (req.method === 'POST') {
     const { subscription, message } = req.body.respuesta
     console.log(subscription)
 
@@ -21,10 +21,10 @@ const Notification = (req, res) => {
             : 'Your web push notification is here!'
         })
       )
-      .then((response) => {
+      .then(response => {
         res.writeHead(response.statusCode, response.headers).end(response.body)
       })
-      .catch((err) => {
+      .catch(err => {
         if ('statusCode' in err) {
           res.writeHead(err.statusCode, err.headers).end(err.body)
         } else {

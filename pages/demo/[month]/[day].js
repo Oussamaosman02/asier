@@ -16,7 +16,7 @@ export default function DiaDemo ({ data, datos }) {
       </h1>
       <br />
       <h2>Eventos</h2>
-      <div className={css.rend}>{datoss.map((dat) => handleEvento(dat))}</div>
+      <div className={css.rend}>{datoss.map(dat => handleEvento(dat))}</div>
       <Link href='/demo'>
         <button>Volver</button>
       </Link>
@@ -33,7 +33,7 @@ export async function getServerSideProps ({ query }) {
   const tiempoMas = 86399000
   const fechaActual =
     new Date(year, query.month - 1, query.day).getTime() + tiempoMas
-  const datos = respu.filter((fec) => fec.fecha === fechaActual)
+  const datos = respu.filter(fec => fec.fecha === fechaActual)
   const data = query
 
   return {

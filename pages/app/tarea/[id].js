@@ -44,7 +44,7 @@ export default function Idn ({ datos }) {
       <hr />
       <form
         className={css.container}
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault()
           publicar()
         }}
@@ -53,7 +53,7 @@ export default function Idn ({ datos }) {
         <textarea ref={comentario} placeholder='tu comentario va aquí' />
         <button
           className={css.but}
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault()
             publicar()
           }}
@@ -63,7 +63,7 @@ export default function Idn ({ datos }) {
       </form>
       <hr />
       <ul className={css.container}>
-        {coments.map((com) => {
+        {coments.map(com => {
           return (
             <li key={com.name + '' + com.body}>
               <h4>{com.name}</h4>

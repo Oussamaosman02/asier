@@ -9,7 +9,6 @@ import css from 'styles/all.module.css'
 export default function IndexDemo ({ datos }) {
   const datoss = datos
   const [isSubscribed, setIsSubscribed] = useState(false)
-  const [subscription, setSubscription] = useState(null)
   const [registration, setRegistration] = useState(null)
   const [name, setName] = useState()
 
@@ -20,8 +19,8 @@ export default function IndexDemo ({ datos }) {
       window.workbox !== undefined
     ) {
       // run only in browser
-      navigator.serviceWorker.ready.then((reg) => {
-        reg.pushManager.getSubscription().then((sub) => {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.pushManager.getSubscription().then(sub => {
           if (
             sub &&
             !(
@@ -29,7 +28,6 @@ export default function IndexDemo ({ datos }) {
               Date.now() > sub.expirationTime - 5 * 60 * 1000
             )
           ) {
-            setSubscription(sub)
             setIsSubscribed(true)
           }
         })
@@ -43,7 +41,7 @@ export default function IndexDemo ({ datos }) {
     setName(localStorage.getItem('nombre'))
   }, [name])
 
-  const subscribeButtonOnClick = async (e) => {
+  const subscribeButtonOnClick = async e => {
     e.preventDefault()
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
@@ -51,13 +49,8 @@ export default function IndexDemo ({ datos }) {
         process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY
       )
     })
-    // TODO: you should call your API to save subscription data on server in order to send web push notification from server
-    setSubscription(sub)
     setIsSubscribed(true)
     console.log('web push subscribed!')
-    const messi = {}
-    messi.endpoint = sub.endpoint
-    console.log(messi)
     localStorage.setItem('subs', JSON.stringify(sub))
   }
 

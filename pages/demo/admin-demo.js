@@ -39,7 +39,7 @@ export default function AdminDemo () {
       <h1>Admin Demo</h1>
       <button
         className={css.but}
-        onClick={(e) => sendNotificationButtonOnClick(e)}
+        onClick={e => sendNotificationButtonOnClick(e)}
       >
         Notificación de prueba
       </button>
@@ -60,7 +60,7 @@ export default function AdminDemo () {
         <br />
         <button
           className={css.but}
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault()
             const obj = {}
             obj.fecha = fecha.current.valueAsNumber + 82799000

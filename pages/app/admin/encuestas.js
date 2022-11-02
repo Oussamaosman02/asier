@@ -13,19 +13,20 @@ export default function Encuestas () {
     const numer = num.current.valueAsNumber
     const iterar = [...Array(numer + 2).keys()]
     const from = forma.current
-    iterar.map((num) => {
-      algo.push(from[num].value)
-    })
+    iterar.map(num => algo.push(from[num].value)
+    )
     const obj = {}
     obj.titulo = algo[0]
     obj.descripcion = algo[1]
     obj.votos = []
     algo.reverse().map((alg, i) => {
       if (i < numer) {
-        obj.votos.push({ nombre: alg, votos: [] })
+        return obj.votos.push({ nombre: alg, votos: [] })
+      } else {
+        return null
       }
     })
-    const res = await fetch('/api/mongo/encuesta', {
+    await fetch('/api/mongo/encuesta', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -38,7 +39,7 @@ export default function Encuestas () {
       <input ref={num} type='number' />
       <button
         className={css.but}
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault()
           const numeros = num.current.valueAsNumber
           setEnc([...Array(numeros).keys()])
@@ -51,7 +52,7 @@ export default function Encuestas () {
       <form
         ref={forma}
         className={css.container}
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault()
           handleSubmit()
         }}
@@ -76,7 +77,7 @@ export default function Encuestas () {
       </form>
       <button
         className={css.but}
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault()
           handleSubmit()
         }}

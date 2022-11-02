@@ -18,7 +18,7 @@ export default async function Notify (req, res) {
   mongoose.connection.close()
   console.log('Closed connection, sended notifications')
 
-  if (req.method == 'POST') {
+  if (req.method === 'POST') {
     const mensaje = JSON.stringify(req.body)
     const message = JSON.parse(mensaje)
     const payload = JSON.stringify({
@@ -27,7 +27,7 @@ export default async function Notify (req, res) {
       time: message.fecha
     })
     try {
-      respuesta.map(async (subs) => {
+      respuesta.map(async subs => {
         const subscription = {
           endpoint: subs.endpoint,
           keys: subs.keys

@@ -12,7 +12,7 @@ In real world, you may want to send the subscription data to your server once us
 
 [![Open in Gitpod](https://img.shields.io/badge/Open%20In-Gitpod.io-%231966D2?style=for-the-badge&logo=gitpod)](https://gitpod.io/#https://github.com/shadowwalker/next-pwa/)
 
-``` bash
+```bash
 cd examples/web-push
 yarn install
 yarn vapid
@@ -28,10 +28,11 @@ NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY=<vapid-public-key>
 
 Build and start
 
-``` bash
+```bash
 yarn build
 yarn start
 ```
+
 ## Recommend `.gitignore`
 
 ```
@@ -39,6 +40,3 @@ yarn start
 **/public/sw.js
 **/public/worker-*.js
 ```
-
-
-

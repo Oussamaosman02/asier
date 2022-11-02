@@ -16,7 +16,7 @@ export default function TareasP ({ datos }) {
   })
   return (
     <div className={css.container}>
-      {datoss.map((dat) => handleEvento(dat, 'tarea'))}
+      {datoss.map(dat => handleEvento(dat, 'tarea'))}
     </div>
   )
 }

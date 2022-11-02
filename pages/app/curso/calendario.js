@@ -19,19 +19,17 @@ export default function CalendarioP ({ datos }) {
     actualMonth + 6
   ]
   const intl = new Intl.DateTimeFormat(locale, { month: 'long' })
-  const actualMonthName = (mname) => intl.format(new Date(actualYear, mname))
+  const actualMonthName = mname => intl.format(new Date(actualYear, mname))
   const weekdays = [...Array(7).keys()]
   const intlWeekDays = new Intl.DateTimeFormat(locale, { weekday: 'short' })
-  const weekdaynames = weekdays.map((weekdayIndex) => {
-    const weekdayname = intlWeekDays.format(
-      new Date(2024, 0, weekdayIndex + 1)
-    )
+  const weekdaynames = weekdays.map(weekdayIndex => {
+    const weekdayname = intlWeekDays.format(new Date(2024, 0, weekdayIndex + 1))
     return weekdayname
   })
   const renderedWeekDays = weekdaynames.map((weekdayname, i) => {
     return <li key={i + weekdayname}>{weekdayname}</li>
   })
-  const calendar = months.map((monthkey) => {
+  const calendar = months.map(monthkey => {
     const monthname = intl.format(new Date(actualYear, monthkey))
     const nextMonthIndex = monthkey + 1
     const daysOfMonth = new Date(actualYear, nextMonthIndex, 0).getDate()
@@ -51,7 +49,7 @@ export default function CalendarioP ({ datos }) {
       return css.anter
     }
     if (respuesta) {
-      respuesta.map((res) => {
+      respuesta.map(res => {
         const dia = new Date(res.fecha).getDate()
         const mes = new Date(res.fecha).getMonth()
         const tipo = res.tipo
@@ -60,19 +58,21 @@ export default function CalendarioP ({ datos }) {
           monthname === actualMonthName(mes) &&
           tipo === 'examen'
         ) {
-          respuesa.push(css.examen)
+          return respuesa.push(css.examen)
         } else if (
           day + 1 === dia &&
           monthname === actualMonthName(mes) &&
           tipo === 'tarea'
         ) {
-          respuesa.push(css.tarea)
+          return respuesa.push(css.tarea)
         } else if (
           day + 1 === dia &&
           monthname === actualMonthName(mes) &&
           tipo === 'otro'
         ) {
-          respuesa.push(css.otro)
+          return respuesa.push(css.otro)
+        } else {
+          return null
         }
       })
       return respuesa.join(' ')

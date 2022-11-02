@@ -17,7 +17,7 @@ export default function ExamenesP ({ datos }) {
 
   return (
     <div className={css.container}>
-      {datoss.map((dat) => handleEvento(dat, 'examen'))}
+      {datoss.map(dat => handleEvento(dat, 'examen'))}
     </div>
   )
 }

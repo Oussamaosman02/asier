@@ -7,9 +7,9 @@ export default async function handler (req, res) {
   await mongoConn()
   console.log('Updating encuesta')
 
-  const encuesta = await Encuesta.findByIdAndUpdate(id, cuerpo, {
+  await Encuesta.findByIdAndUpdate(id, cuerpo, {
     new: true
-  }).then((resultado) => {
+  }).then(resultado => {
     res.json(resultado)
   })
   mongoose.connection.close()

@@ -16,11 +16,26 @@ self.addEventListener('push', function (event) {
         }
       ],
       data: {
-        url: `${URI}/demo`
+        url: `${URI}/app`
       },
       vibrate: [
-        500, 110, 500, 110, 450, 110, 200, 110, 170, 40, 450, 110, 200, 110,
-        170, 40, 500
+        500,
+        110,
+        500,
+        110,
+        450,
+        110,
+        200,
+        110,
+        170,
+        40,
+        450,
+        110,
+        200,
+        110,
+        170,
+        40,
+        500
       ],
       requireInteraction: true,
       timestamp: data.time
@@ -31,9 +46,9 @@ self.addEventListener('push', function (event) {
 self.addEventListener('notificationclick', function (e) {
   e.notification.close()
   e.waitUntil(
-    clients.matchAll({ type: 'window' }).then((clientsArr) => {
+    clients.matchAll({ type: 'window' }).then(clientsArr => {
       // If a Window tab matching the targeted URL already exists, focus that;
-      const hadWindowToFocus = clientsArr.some((windowClient) =>
+      const hadWindowToFocus = clientsArr.some(windowClient =>
         windowClient.url === e.notification.data.url
           ? (windowClient.focus(), true)
           : false
@@ -42,7 +57,7 @@ self.addEventListener('notificationclick', function (e) {
       if (!hadWindowToFocus) {
         clients
           .openWindow(e.notification.data.url)
-          .then((windowClient) => (windowClient ? windowClient.focus() : null))
+          .then(windowClient => (windowClient ? windowClient.focus() : null))
       }
     })
   )

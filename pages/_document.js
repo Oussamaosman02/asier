@@ -33,7 +33,8 @@ class _Document extends Document {
           />
           <link rel='manifest' href='/manifest.json' />
           <link rel='shortcut icon' href='/favicon.ico' />
-          <style>{`
+          <style>
+            {`
             html, body, #__next {
               height: 100%;
             }

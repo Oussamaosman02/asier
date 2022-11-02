@@ -14,8 +14,8 @@ export default async function handler (req, res) {
     descripcion: cuerpo.descripcion,
     coments: cuerpo.coments
   }
-  const tarea = await Tarea.findByIdAndUpdate(id, nuevo, { new: true }).then(
-    (resultado) => {
+  await Tarea.findByIdAndUpdate(id, nuevo, { new: true }).then(
+    resultado => {
       res.json(resultado)
     }
   )

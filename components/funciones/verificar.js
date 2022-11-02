@@ -1,5 +1,5 @@
 export default function verificar (passwd) {
-  const contra = 'OscarIPV6'
+  const contra = '1234'
   if (passwd === contra) {
     return true
   } else {

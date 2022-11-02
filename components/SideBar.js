@@ -11,41 +11,41 @@ export default function SideBar ({ isOpen, closeModal }) {
   isOpen ? (clases = [css.modal, css.isopen]) : (clases = [css.modal])
   return (
     <article className={clases.join(' ')} onClick={closeModal}>
-      <div className={css.modalContainer} onClick={(e) => e.stopPropagation()}>
+      <div className={css.modalContainer} onClick={e => e.stopPropagation()}>
         <h1>ASIeR</h1>
         <hr />
         <button className={css.modalClose} onClick={closeModal}>
           X
         </button>
         <ul>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/'>Home</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app'>App</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/admin'>Admin</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/curso/avisos'>Avisos</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/curso/calendario'>Calendario</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/curso/examenes'>Exámenes</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/curso/tareas'>Tareas</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/control/create/one/administrator'>Control</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/app/curso/encuestas'>Encuesta</Link>
           </li>
-          <li onClick={(e) => closeAlgo(e)}>
+          <li onClick={e => closeAlgo(e)}>
             <Link href='/demo'>Demo</Link>
           </li>
         </ul>

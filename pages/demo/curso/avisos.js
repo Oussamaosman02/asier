@@ -18,7 +18,7 @@ export default function AvisosPDemo ({ datos }) {
 
   return (
     <div className={css.container}>
-      {datoss.map((dat) => handleEvento(dat, 'otro'))}
+      {datoss.map(dat => handleEvento(dat, 'otro'))}
     </div>
   )
 }
