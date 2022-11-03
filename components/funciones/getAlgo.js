@@ -29,8 +29,9 @@ export async function getDay (query) {
   const year = new Date().getFullYear()
   console.log(year)
   const tiempoMas = 59399000
-  const fechaActual =
+  const actual =
     new Date(year, query.month - 1, query.day).getTime() + tiempoMas
+  const fechaActual = actual + 23400000
   console.log(fechaActual)
   // datos que devuelve
   const datos = await res.filter(fec => fec.fecha === fechaActual)
