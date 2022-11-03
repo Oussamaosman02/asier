@@ -53,17 +53,16 @@ export default function Admin ({ datos }) {
       <br />
       <button
         className={css.but}
-        onClick={e => {
-          e.preventDefault()
+        onClick={
           sendNotificationButtonOnClick()
-        }}
+        }
       >
         Mandar
       </button>
       <hr />
       <h3>Todos los datos</h3>
       {
-        datos.map((dat) => handleEvento(dat, 'examen'))
+        datos.map((dat) => handleEvento(dat))
       }
     </div>
   )
