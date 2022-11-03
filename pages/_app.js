@@ -1,9 +1,11 @@
-// import Layout from 'components/Layout'
+import Layout from 'components/Layout'
 import '../styles/globals.css'
 
 function MyApp ({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <Layout title='ASIeR'>
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 
