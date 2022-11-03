@@ -8,7 +8,8 @@ export default function Encuestas () {
   const forma = useRef()
   const num = useRef()
 
-  async function handleSubmit () {
+  async function handleSubmit (e) {
+    e.preventDefault()
     const algo = []
     const numer = num.current.valueAsNumber
     const iterar = [...Array(numer + 2).keys()]
@@ -84,10 +85,8 @@ export default function Encuestas () {
       </form>
       <button
         className={css.but}
-        onClick={e => {
-          e.preventDefault()
-          handleSubmit()
-        }}
+        onClick={(e) =>
+          handleSubmit(e)}
       >
         Crear
       </button>

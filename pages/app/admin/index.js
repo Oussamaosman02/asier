@@ -9,7 +9,8 @@ export default function Admin ({ datos }) {
   const desc = useRef()
   const seleccion = useRef()
 
-  async function sendNotificationButtonOnClick () {
+  async function sendNotificationButtonOnClick (e) {
+    e.preventDefault()
     const obj = {}
     obj.fecha = fecha.current.valueAsNumber + 82799000
     obj.fechaString = fecha.current.value
@@ -53,16 +54,15 @@ export default function Admin ({ datos }) {
       <br />
       <button
         className={css.but}
-        onClick={
-          sendNotificationButtonOnClick()
-        }
+        onClick={(e) =>
+          sendNotificationButtonOnClick(e)}
       >
         Mandar
       </button>
       <hr />
       <h3>Todos los datos</h3>
       {
-        datos.map((dat) => handleEvento(dat))
+        datos.map((dat) => handleEvento(dat, 'examen'))
       }
     </div>
   )
