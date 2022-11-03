@@ -10,6 +10,7 @@ export async function getIdn (query) {
   mongoose.connection.close()
   console.log('Closed connection, everything get')
   const datos = await res.find(ele => ele.id === query.id)
+  console.log(await datos)
   return {
     props: {
       datos
@@ -33,7 +34,7 @@ export async function getDay (query) {
 
   // datos que devuelve
   const datos = await res.filter(fec => fec.fecha === fechaActual)
-  console.log(datos)
+  console.log(await datos)
   const data = query
   console.log(data)
   return {
@@ -53,6 +54,7 @@ export async function getEncuesta () {
   mongoose.connection.close()
   console.log('Closed connection, survey getted')
   const datos = await res
+  console.log(await datos)
   return {
     props: {
       datos
@@ -69,6 +71,7 @@ export async function getEncId (query) {
   mongoose.connection.close()
   console.log('Closed connection, survey id getted')
   const datos = await res.find(ele => ele.id === query.id)
+  console.log(await datos)
   return {
     props: {
       datos
