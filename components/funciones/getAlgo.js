@@ -26,10 +26,9 @@ export async function getDay (query) {
   const res = JSON.parse(JSON.stringify(tarea))
   mongoose.connection.close()
   console.log('Closed connection, day info getted')
-  console.log(await res)
   const year = new Date().getFullYear()
   console.log(year)
-  const tiempoMas = 86399000
+  const tiempoMas = 59399000
   const fechaActual =
     new Date(year, query.month - 1, query.day).getTime() + tiempoMas
   console.log(fechaActual)
