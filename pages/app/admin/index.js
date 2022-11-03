@@ -1,7 +1,9 @@
+import getProps from 'components/funciones/getprops'
 import { useRef } from 'react'
+import handleEvento from 'components/funciones/handle'
 import css from 'styles/all.module.css'
 
-export default function Admin () {
+export default function Admin ({ datos }) {
   const fecha = useRef()
   const titulo = useRef()
   const desc = useRef()
@@ -58,6 +60,15 @@ export default function Admin () {
       >
         Mandar
       </button>
+      <hr />
+      <h3>Todos los datos</h3>
+      {
+        datos.map((dat) => handleEvento(dat, 'examen'))
+      }
     </div>
   )
+}
+
+export async function getServerSideProps () {
+  return await getProps()
 }
