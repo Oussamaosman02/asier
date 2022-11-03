@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import css from 'styles/all.module.css'
 
@@ -7,7 +8,7 @@ export default function Encuestas () {
   const desc = useRef()
   const forma = useRef()
   const num = useRef()
-
+  const rut = useRouter()
   async function handleSubmit (e) {
     e.preventDefault()
     const algo = []
@@ -41,6 +42,8 @@ export default function Encuestas () {
       },
       body: JSON.stringify(obj)
     })
+
+    rut.reload()
   }
   return (
     <div className={css.container}>
@@ -55,7 +58,7 @@ export default function Encuestas () {
       >
         Añadir Opciones
       </button>
-      <h1>Encuestas</h1>
+      <h2>Encuestas</h2>
       <form
         ref={forma}
         className={css.container}
@@ -64,15 +67,13 @@ export default function Encuestas () {
           handleSubmit()
         }}
       >
-        <h2>Título</h2>
+        <h3>Título</h3>
         <input ref={tit} type='text' placeholder='titulo' />
-        <h3>descripción</h3>
+        <h4>descripción</h4>
         <textarea ref={desc} placeholder='Descripción breve' />
         <hr />
-        <h4>Opciones</h4>
-
+        <h5>Opciones</h5>
         <hr />
-
         {enc.map((en, i) => {
           return (
             <input

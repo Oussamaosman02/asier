@@ -36,7 +36,7 @@ export default function AdminDemo () {
 
   return (
     <div className={css.container}>
-      <h1>Admin Demo</h1>
+      <h2>Admin Demo</h2>
       <button
         className={css.but}
         onClick={e => sendNotificationButtonOnClick(e)}

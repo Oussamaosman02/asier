@@ -5,8 +5,8 @@ export default function IdnDemo ({ datos }) {
   const { fecha, titulo, descripcion, coments } = datos
   return (
     <div className={css.container}>
-      <h1>{titulo}</h1>
-      <h2>{new Date(fecha).toLocaleDateString()}</h2>
+      <h2>{titulo}</h2>
+      <h3>{new Date(fecha).toLocaleDateString()}</h3>
       <p>{descripcion}</p>
       <hr />
       <ul className={css.container}>

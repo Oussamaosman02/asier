@@ -10,11 +10,11 @@ export default function DiaDemo ({ data, datos }) {
   )
   return (
     <div className={css.container}>
-      <h1>
+      <h2>
         {datas.day} de {monthName} del {datas.month > 12 ? year + 1 : year}
-      </h1>
+      </h2>
       <br />
-      <h2>Eventos</h2>
+      <h3>Eventos</h3>
       <div className={css.rend}>{datoss.map(dat => handleEvento(dat))}</div>
       <Link href='/demo'>
         <a>

@@ -39,8 +39,8 @@ export default function Idn ({ datos }) {
   }
   return (
     <div className={css.container}>
-      <h1>{titulo}</h1>
-      <h2>{fechaString}</h2>
+      <h2>{titulo}</h2>
+      <h3>{fechaString}</h3>
       <p>{descripcion}</p>
       <hr />
       <h4>Añadir comentario</h4>

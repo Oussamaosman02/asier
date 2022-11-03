@@ -6,7 +6,7 @@ export default function EncuestasL ({ datos }) {
   const data = datos
   return (
     <div className={css.container}>
-      <h1>Encuestas</h1>
+      <h2>Encuestas</h2>
       {data.map(dat => {
         return (
           <div key={dat.id} className={css.container}>

@@ -15,7 +15,7 @@ export default function SideBar ({ isOpen, closeModal }) {
       }
     >
       <nav className={css.modalContainer} onClick={e => e.stopPropagation()}>
-        <h1>ASIeR</h1>
+        <h2>ASIeR</h2>
         <hr />
         <button
           className={css.modalClose} onClick={

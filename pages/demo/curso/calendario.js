@@ -100,7 +100,7 @@ export default function CalendarioPDemo ({ datos }) {
         ))
         return (
           <div className={css.calendar} key={monthname}>
-            <h1>{monthname}</h1>
+            <h2>{monthname}</h2>
             <ol>
               {renderedWeekDays}
               {renderedDays}

@@ -1,16 +1,15 @@
-import getProps from 'components/funciones/getprops'
 import { useRef } from 'react'
-import handleEvento from 'components/funciones/handle'
 import css from 'styles/all.module.css'
+import { useRouter } from 'next/router'
 
-export default function Admin ({ datos }) {
+export default function Admin () {
   const fecha = useRef()
   const titulo = useRef()
   const desc = useRef()
   const seleccion = useRef()
+  const rut = useRouter()
 
-  async function sendNotificationButtonOnClick (e) {
-    e.preventDefault()
+  async function sendNotificationButtonOnClick () {
     const obj = {}
     obj.fecha = fecha.current.valueAsNumber + 82799000
     obj.fechaString = fecha.current.value
@@ -34,11 +33,12 @@ export default function Admin ({ datos }) {
       },
       body: JSON.stringify(obj)
     })
+    rut.reload()
   }
 
   return (
     <div className={css.container}>
-      <h1>Admin</h1>
+      <h2>Admin</h2>
       <br />
       <input ref={fecha} type='date' />
       <br />
@@ -46,28 +46,21 @@ export default function Admin ({ datos }) {
       <br />
       <textarea ref={desc} placeholder='Descripción' />
       <br />
-      <select ref={seleccion}>
-        <option value='tarea'>Tarea</option>
+      <select name='selección' ref={seleccion}>
         <option value='examen'>Examen</option>
-        <option value='otro'>Otro</option>
+        <option value='otro' selected>Otro</option>
+        <option value='tarea'>Tarea</option>
       </select>
       <br />
       <button
         className={css.but}
-        onClick={(e) =>
-          sendNotificationButtonOnClick(e)}
+        onClick={(e) => {
+          e.preventDefault()
+          sendNotificationButtonOnClick()
+        }}
       >
         Mandar
       </button>
-      <hr />
-      <h3>Todos los datos</h3>
-      {
-        datos.map((dat) => handleEvento(dat, 'examen'))
-      }
     </div>
   )
-}
-
-export async function getServerSideProps () {
-  return await getProps()
 }
