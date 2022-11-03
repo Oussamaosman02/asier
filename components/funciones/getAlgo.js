@@ -33,7 +33,9 @@ export async function getDay (query) {
 
   // datos que devuelve
   const datos = await res.filter(fec => fec.fecha === fechaActual)
+  console.log(datos)
   const data = query
+  console.log(data)
   return {
     props: {
       data,
