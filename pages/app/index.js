@@ -49,11 +49,8 @@ export default function Index ({ datos }) {
 
   return (
     <div className={css.container}>
-      {!registration && isSubscribed
+      {registration && !isSubscribed
         ? (
-            ''
-          )
-        : (
           <button
             className={css.but} onClick={(e) => {
               e.preventDefault()
@@ -62,7 +59,8 @@ export default function Index ({ datos }) {
           >
             Quiero recibir Notificaciones
           </button>
-          )}
+          )
+        : ''}
       <br />
       <Calendario datos={datos} />
       <br />

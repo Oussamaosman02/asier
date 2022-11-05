@@ -1,4 +1,5 @@
 import { getEncId } from 'components/funciones/getAlgo'
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import css from 'styles/all.module.css'
 
@@ -7,7 +8,7 @@ export default function EncuestasL ({ datos }) {
   const { titulo, descripcion, votos, id } = datos
   const votol = votos
   async function handleVote (vot) {
-    const nombre = localStorage.getItem('nombre')
+    const nombre = Cookies.get('nombre')
     const obj = {
       titulo,
       descripcion,

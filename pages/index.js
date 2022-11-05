@@ -1,8 +1,6 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import verificar from '../components/funciones/verificar'
-import Cookies from 'js-cookie'
 import css from 'styles/all.module.css'
 
 export default function Home () {
@@ -10,18 +8,23 @@ export default function Home () {
   const inpcontra = useRef()
   const rut = useRouter()
 
-  function handleSubmit () {
+  async function handleSubmit () {
     const name = inpnombre.current.value
     const pass = inpcontra.current.value
-    const si = verificar(pass)
-    if (name && si) {
-      localStorage.setItem('nombre', name)
-      Cookies.set('inicio', true)
-      rut.push('/app')
+    if (name && pass) {
+      await fetch('/api/auth/name', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({ name, pass })
+      }).then((res) => {
+        res.status === 401 ? console.error('hay un problema') : rut.push('/app')
+      })
     } else if (!name) {
       alert('No has indicado tu nombre')
-    } else if (!si) {
-      alert('No es esa la contraseña')
+    } else if (!pass) {
+      alert('Pon una contraseña')
     }
   }
   return (

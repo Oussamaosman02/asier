@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { getIdn } from 'components/funciones/getAlgo'
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import css from 'styles/all.module.css'
 
 export default function Idn ({ datos }) {
   const { fecha, fechaString, titulo, descripcion, coments, id } = datos
-  const [name, setName] = useState()
-  useEffect(() => {
-    setName(localStorage.getItem('nombre'))
-  }, [])
+  const name = Cookies.get('nombre')
   const rut = useRouter()
   const comentario = useRef()
   async function publicar () {

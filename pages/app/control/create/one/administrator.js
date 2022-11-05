@@ -24,7 +24,7 @@ export default function Administrator () {
         alert(prob.problema)
       } else if (prob.exit) {
         Cookies.set('admin', true)
-        rut.push('/app')
+        rut.push('/app/admin')
         alert(`Bienvenido ${user}`)
       }
     } else if (!user) {
