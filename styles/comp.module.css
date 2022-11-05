@@ -1,0 +1,135 @@
+/*Componente exámen y handle*/
+.maxexa {
+  width: 80%;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.exa {
+  width: 100%;
+  padding: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--v);
+  margin: 1vh 0;
+  border-radius: 10px;
+}
+.exa h4 {
+  width: fit-content;
+  margin: 0 auto 0 0;
+  padding: 0 5px;
+  text-align: left;
+  border-bottom-right-radius: 10px;
+  border-top: 1px solid var(--v);
+  border-left: 1px solid var(--v);
+  background-color: var(--b);
+}
+.exa p {
+  width: 85%;
+  margin: 0 auto;
+  text-align: left;
+}
+.exa h6 {
+  width: fit-content;
+  padding: 5px;
+  margin: 5px auto 0 auto;
+  background-color: var(--b);
+  color: var(--a);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.but {
+  width: fit-content;
+  padding: 10px;
+  color: var(--b);
+  background-color: var(--n);
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  margin: 1vh 0;
+}
+
+.but:hover {
+  background-color: var(--a);
+}
+
+/*month/day*/
+
+.monthday {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.monthday h2 {
+  text-decoration: 1px underline solid var(--a);
+}
+
+.monthday hr {
+  width: 100vw;
+  border: 0.5px solid var(--a);
+  margin: 0.5vh 0;
+}
+
+/*tarea/id*/
+.tarea,
+.lista {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tarea h2 {
+  text-decoration: 1px underline solid var(--a);
+}
+
+.tarea h3 {
+  color: var(--a);
+}
+
+.tarea p,
+.tarea textarea {
+  border: 1px solid var(--v);
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.tarea hr {
+  width: 100vw;
+  border: 0.5px solid var(--a);
+  margin: 0.5vh 0;
+}
+
+/*encuesta/index*/
+
+.enc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.enc h2 {
+  text-decoration: 1px underline solid var(--a);
+  text-align: center;
+}
+
+.enc hr {
+  width: 100vw;
+  border: 0.5px solid var(--a);
+  margin: 0.5vh 0;
+}

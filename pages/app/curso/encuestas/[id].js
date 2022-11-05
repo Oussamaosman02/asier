@@ -1,7 +1,7 @@
 import { getEncId } from 'components/funciones/getAlgo'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
-import css from 'styles/all.module.css'
+import css from 'styles/comp.module.css'
 
 export default function EncuestasL ({ datos }) {
   const rut = useRouter()
@@ -33,15 +33,15 @@ export default function EncuestasL ({ datos }) {
     }
   }
   return (
-    <div key={id} className={css.container}>
+    <div key={id} className={css.enc}>
       <h2>{titulo}</h2>
       <p>{descripcion}</p>
       <hr />
       {votol.map(vot => {
         return (
-          <li className={css.container} key={id + '' + vot.nombre}>
+          <li className={css.exa} key={id + '' + vot.nombre}>
             <h4>{vot.nombre}</h4>
-            <h5>{vot.votos.length}</h5>
+            <h5>Número de votos: {vot.votos.length}</h5>
             <button
               className={css.but}
               onClick={e => {

@@ -1,5 +1,6 @@
+import Link from 'next/link'
 import React, { Fragment } from 'react'
-import css from 'styles/all.module.css'
+import css from 'styles/comp.module.css'
 
 export default function Examenes ({ datos, espec }) {
   const data = datos.filter(ele => ele.fecha > new Date().getTime())
@@ -17,20 +18,24 @@ export default function Examenes ({ datos, espec }) {
     const descripcion = dat.descripcion.split('\n')
     if (dat.tipo === espec) {
       return (
-        <li className={css.container} key={dat.id}>
-          <h4>{dat.titulo}</h4>
-          <p>
-            {descripcion.map((desc, i) => {
-              return (
-                <Fragment key={desc + '' + i + '' + dat.id}>
-                  {desc}
-                  <br />
-                </Fragment>
-              )
-            })}
-          </p>
-          <h6>{new Date(dat.fecha).toLocaleDateString()}</h6>
-        </li>
+        <Link href={`/app/tarea/${dat.id}`}>
+          <a className={css.maxexa}>
+            <li className={css.exa} key={dat.id}>
+              <h4>{dat.titulo}</h4>
+              <p>
+                {descripcion.map((desc, i) => {
+                  return (
+                    <Fragment key={desc + '' + i + '' + dat.id}>
+                      {desc}
+                      <br />
+                    </Fragment>
+                  )
+                })}
+              </p>
+              <h6>{new Date(dat.fecha).toLocaleDateString()}</h6>
+            </li>
+          </a>
+        </Link>
       )
     }
   }

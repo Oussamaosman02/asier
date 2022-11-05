@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import css from 'styles/all.module.css'
+import css from 'styles/indice.module.css'
 
 export default function Home () {
   const inpnombre = useRef()
@@ -29,24 +29,24 @@ export default function Home () {
   }
   return (
     <div className={css.container}>
-      <h2>La web/app de ASIR</h2>
+      <h2>La <span>web</span>/<span>app</span> de ASIR</h2>
       <hr />
       <Link href='/demo'>
         <button className={css.but}>Demo</button>
       </Link>
       <form
-        className={css.container}
+        className={css.form}
         onSubmit={e => {
           e.preventDefault()
           handleSubmit()
         }}
       >
         <h3>Log In</h3>
-        <div className={css.container}>
+        <div className={css.disp}>
           <h4>Nombre</h4>
           <input ref={inpnombre} type='text' placeholder='nombre' />
         </div>
-        <div className={css.container}>
+        <div className={css.disp}>
           <h4>Contraseña</h4>
           <input ref={inpcontra} type='password' placeholder='contraseña' />
         </div>

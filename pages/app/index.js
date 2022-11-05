@@ -65,11 +65,17 @@ export default function Index ({ datos }) {
       <Calendario datos={datos} />
       <br />
       <h2>Examenes</h2>
-      <Examenes espec='examen' datos={datos} />
+      <ul>
+        <Examenes espec='examen' datos={datos} />
+      </ul>
       <h2>Tareas</h2>
-      <Examenes espec='tarea' datos={datos} />
+      <ul>
+        <Examenes espec='tarea' datos={datos} />
+      </ul>
       <h2>Otros avisos</h2>
-      <Examenes espec='otro' datos={datos} />
+      <ul>
+        <Examenes espec='otro' datos={datos} />
+      </ul>
     </div>
   )
 }

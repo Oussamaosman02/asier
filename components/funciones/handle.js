@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Fragment } from 'react'
+import css from 'styles/comp.module.css'
 
 export default function handleEvento (dat, tipo) {
   function numero (algo) {
@@ -15,8 +16,8 @@ export default function handleEvento (dat, tipo) {
   if (dat.tipo === tipo) {
     return (
       <Link key={dat.id} href={`/app/tarea/${dat.id}`}>
-        <a>
-          <li>
+        <a className={css.maxexa}>
+          <li className={css.exa}>
             <h4>{dat.titulo}</h4>
             <p>
               {descripcion.map((desc, i) => {
@@ -37,8 +38,8 @@ export default function handleEvento (dat, tipo) {
   } else if (!tipo) {
     return (
       <Link key={dat.id} href={`/app/tarea/${dat.id}`}>
-        <a>
-          <li>
+        <a className={css.maxexa}>
+          <li className={css.exa}>
             <h4>{dat.titulo}</h4>
             <p>
               {descripcion.map((desc, i) => {

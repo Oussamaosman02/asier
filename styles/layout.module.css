@@ -32,6 +32,9 @@
   height: 100%;
   z-index: 3;
 }
+.all header h1 span {
+  color: var(--a);
+}
 .container {
   margin-top: 7vh;
   width: 100%;
@@ -40,4 +43,27 @@
   align-items: center;
   flex-direction: column;
   padding: 0% 10px;
+}
+
+/*si no estás logeado*/
+.nolog {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nolog button {
+  width: fit-content;
+  padding: 10px;
+  color: var(--b);
+  background-color: var(--n);
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  margin: 1vh 0;
+}
+.nolog button:hover {
+  background-color: var(--a);
 }

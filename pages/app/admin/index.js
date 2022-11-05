@@ -1,8 +1,9 @@
 import { useRef } from 'react'
-import css from 'styles/all.module.css'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
+import css from 'styles/admin.module.css'
+
 export default function Admin () {
   const fecha = useRef()
   const titulo = useRef()
@@ -42,27 +43,34 @@ export default function Admin () {
       <div className={css.container}>
         <h2>Admin</h2>
         <br />
-        <input ref={fecha} type='date' />
-        <br />
-        <input ref={titulo} type='text' placeholder='Título' />
-        <br />
-        <textarea ref={desc} placeholder='Descripción' />
-        <br />
-        <select name='selección' defaultValue='otro' ref={seleccion}>
-          <option value='examen'>Examen</option>
-          <option value='otro'>Otro</option>
-          <option value='tarea'>Tarea</option>
-        </select>
-        <br />
-        <button
-          className={css.but}
-          onClick={(e) => {
-            e.preventDefault()
-            sendNotificationButtonOnClick()
-          }}
-        >
-          Mandar
-        </button>
+        <div className={css.forma}>
+          <input ref={fecha} type='date' />
+          <br />
+          <input ref={titulo} type='text' placeholder='Título' />
+          <br />
+          <textarea ref={desc} placeholder='Descripción' />
+          <br />
+          <select name='selección' defaultValue='otro' ref={seleccion}>
+            <option value='examen'>Examen</option>
+            <option value='otro'>Otro</option>
+            <option value='tarea'>Tarea</option>
+          </select>
+          <br />
+          <button
+            className={css.but}
+            onClick={(e) => {
+              e.preventDefault()
+              sendNotificationButtonOnClick()
+            }}
+          >
+            Mandar
+          </button>
+        </div>
+        <Link href='/app/admin/encuestas'>
+          <button className={css.but}>
+            Crear Encuesta
+          </button>
+        </Link>
       </div>
     )
   } else {

@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { getIdn } from 'components/funciones/getAlgo'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
-import css from 'styles/all.module.css'
+import css from 'styles/comp.module.css'
 
 export default function Idn ({ datos }) {
   const { fecha, fechaString, titulo, descripcion, coments, id } = datos
@@ -36,7 +36,7 @@ export default function Idn ({ datos }) {
     }
   }
   return (
-    <div className={css.container}>
+    <div className={css.tarea}>
       <h2>{titulo}</h2>
       <h3>{fechaString}</h3>
       <p>{descripcion}</p>
@@ -53,10 +53,10 @@ export default function Idn ({ datos }) {
         Publicar
       </button>
       <hr />
-      <ul className={css.container}>
+      <ul className={css.lista}>
         {coments.map(com => {
           return (
-            <li key={com.name + '' + com.body}>
+            <li className={css.exa} key={com.name + '' + com.body}>
               <h4>{com.name}</h4>
               <p>{com.body}</p>
             </li>

@@ -3,23 +3,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
 }
 .calendar {
   text-align: center;
   padding: 3%;
-  margin: 0vw auto;
-  width: 90%;
+  width: 100%;
+  margin: 1vh auto;
+}
+.calendar h2 {
+  border: 1px solid var(--v);
+  border-bottom: 0px solid var(--a);
+  width: fit-content;
+  padding: 0 3px;
+  margin: 0 auto;
+  border-radius:10px 10px 0px 0px;
 }
 .calendar ol {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--v);
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
+  column-gap: 3px;
   list-style: none;
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 3px 0;
 }
 .calendar ol li {
+  border-radius: 5px;
   font-size: 1.5ch;
 }
 .primero {
@@ -28,8 +42,9 @@
 
 .anter {
   color: gray;
-  opacity: 0.5;
+  opacity: 0.3;
 }
+
 .otro {
   position: relative;
 }
@@ -37,19 +52,17 @@
 .otro::after {
   content: '.';
   position: absolute;
-  color: navy;
+  color: var(--n);
 }
 
 .tarea {
   background-color: orange;
-  color: var(--b);
   font-weight: 700;
   position: relative;
 }
 
 .examen {
   background-color: #ff4242;
-  color: var(--b);
   font-weight: 700;
   position: relative;
 }
@@ -61,6 +74,7 @@
   position: absolute;
   content: 'x2';
   top: 0;
-  left: 0%;
+  left: 0;
   font-size: 0.5rem;
+  color: var(--b);
 }

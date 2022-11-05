@@ -1,7 +1,7 @@
 import { getDay } from 'components/funciones/getAlgo'
 import handleEvento from 'components/funciones/handle'
 import Link from 'next/link'
-import css from 'styles/all.module.css'
+import css from 'styles/comp.module.css'
 
 export default function Dia ({ data, datos }) {
   const datoss = datos
@@ -12,13 +12,13 @@ export default function Dia ({ data, datos }) {
     new Date(year, datas.month - 1)
   )
   return (
-    <div className={css.container}>
+    <div className={css.monthday}>
       <h2>
         {datas.day} de {monthName} del {datas.month > 12 ? year + 1 : year}
       </h2>
-      <br />
+      <hr />
       <h3>Eventos</h3>
-      <div className={css.rend}>{datoss.map(dat => handleEvento(dat))}</div>
+      <div>{datoss.map(dat => handleEvento(dat))}</div>
       <Link href='/app'>
         <a>
           <button className={css.but}>Volver</button>

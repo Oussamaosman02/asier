@@ -10,7 +10,9 @@ export default function Layout ({ children }) {
   const admin = Cookies.get('admin')
   const name = Cookies.get('nombre')
   const rut = useRouter()
-  if (name) {
+  if (name && rut.pathname === '/') {
+    rut.push('/app')
+  } else if (name) {
     return (
       <>
         <Head>
@@ -21,7 +23,7 @@ export default function Layout ({ children }) {
             <button className={css.butop} onClick={openModal}>
               x
             </button>
-            <h1>ASIeR {name && `x ${name}`}</h1>
+            <h1>ASIeR {name && (<><span>x</span> {name}</>)}</h1>
             <SideBar admin={admin} inicio={name} isOpen={isOpen} closeModal={closeModal} />
           </header>
           <div className={css.container}>{children}</div>
@@ -36,7 +38,7 @@ export default function Layout ({ children }) {
         </Head>
         <div className={css.all}>
           <header>
-            <h1>ASIeR {name && `x ${name}`}</h1>
+            <h1>ASIeR</h1>
           </header>
           <div className={css.container}>{children}</div>
         </div>
@@ -48,7 +50,7 @@ export default function Layout ({ children }) {
         <Head>
           <title>ASIeR</title>
         </Head>
-        <div className={css.container}>
+        <div className={css.nolog}>
           <h1>Debes identificarte</h1>
           <Link href='/'>
             <button>Log In</button>

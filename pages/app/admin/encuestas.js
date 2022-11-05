@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
-import css from 'styles/all.module.css'
+import css from 'styles/admin.module.css'
 
 export default function Encuestas () {
   const [enc, setEnc] = useState([])
@@ -43,25 +43,31 @@ export default function Encuestas () {
       body: JSON.stringify(obj)
     })
 
-    rut.reload()
+    rut.push('/app/curso/encuestas')
   }
   return (
     <div className={css.container}>
-      <input ref={num} type='number' />
-      <button
-        className={css.but}
-        onClick={e => {
-          e.preventDefault()
-          const numeros = num.current.valueAsNumber
-          setEnc([...Array(numeros).keys()])
-        }}
-      >
-        Añadir Opciones
-      </button>
+      <div className={css.encu}>
+        <input ref={num} type='number' placeholder='Número de opciones' />
+        <button
+          className={css.but}
+          onClick={e => {
+            e.preventDefault()
+            const numeros = num.current.valueAsNumber
+            if (numeros > 0) {
+              setEnc([...Array(numeros).keys()])
+            } else {
+              alert('Selecciona algun número')
+            }
+          }}
+        >
+          Añadir Opciones
+        </button>
+      </div>
       <h2>Encuestas</h2>
       <form
         ref={forma}
-        className={css.container}
+        className={css.forma}
         onSubmit={e => {
           e.preventDefault()
           handleSubmit()

@@ -1,16 +1,16 @@
 import { getEncuesta } from 'components/funciones/getAlgo'
 import Link from 'next/link'
-import css from 'styles/all.module.css'
+import css from 'styles/comp.module.css'
 
 export default function EncuestasL ({ datos }) {
-  const data = datos
+  const data = datos.reverse()
   return (
-    <div className={css.container}>
+    <div className={css.enc}>
       <h2>Encuestas</h2>
       {data.map(dat => {
         return (
-          <div key={dat.id} className={css.container}>
-            <h3>{dat.titulo}</h3>
+          <div key={dat.id} className={css.exa}>
+            <h4>{dat.titulo}</h4>
             <p>{dat.descripcion}</p>
             <Link href={`/app/curso/encuestas/${dat.id}`}>
               <a>

@@ -9,13 +9,19 @@
   align-items: center;
 }
 
+.container ul {
+  width: 100%;
+}
+
 .but {
   width: fit-content;
-  padding: 5px;
+  padding: 10px;
   color: var(--b);
   background-color: var(--n);
   font-weight: 700;
   border: none;
+  border-radius: 10px;
+  margin: 1vh 0;
 }
 
 .but:hover {

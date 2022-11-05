@@ -81,7 +81,7 @@ export default function Calendario ({ datos }) {
             style={
               i === 0
                 ? { gridColumnStart: `${startsOn}` }
-                : { color: 'royalblue' }
+                : { color: 'var(--a)' }
             }
             key={`${monthname}${day}`}
           >
@@ -90,7 +90,7 @@ export default function Calendario ({ datos }) {
         ))
         return (
           <div className={css.calendar} key={monthname}>
-            <h2>{monthname}</h2>
+            <h2>{monthname.toLocaleUpperCase()}</h2>
             <ol>
               {renderedWeekDays}
               {renderedDays}

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
-import css from 'styles/all.module.css'
+import css from 'styles/admin.module.css'
 
 export default function Administrator () {
   const usuario = useRef()
@@ -35,21 +35,23 @@ export default function Administrator () {
   }
   return (
     <div className={css.container}>
-      <h2>Usuario</h2>
-      <input ref={usuario} type='text' placeholder='usuario' />
-      <br />
-      <h2>Clave</h2>
-      <input ref={key} type='password' placeholder='clave' />
-      <br />
-      <button
-        className={css.but}
-        onClick={e => {
-          e.preventDefault()
-          handleSubmit()
-        }}
-      >
-        Entrar
-      </button>
+      <div className={css.forma}>
+        <h2>Usuario</h2>
+        <input ref={usuario} type='text' placeholder='usuario' />
+        <br />
+        <h2>Clave</h2>
+        <input ref={key} type='password' placeholder='clave' />
+        <br />
+        <button
+          className={css.but}
+          onClick={e => {
+            e.preventDefault()
+            handleSubmit()
+          }}
+        >
+          Entrar
+        </button>
+      </div>
     </div>
   )
 }
