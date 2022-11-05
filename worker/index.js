@@ -6,35 +6,31 @@ self.addEventListener('push', function (event) {
   event.waitUntil(
     registration.showNotification(data.title, {
       body: data.message,
-      icon: '/icons/android-chrome-192x192.png',
-      badge: '/icons/icons.png',
+      icon: '/icons/icon.png',
+      badge: '/icons/notis.png',
       actions: [
         {
           action: 'tarea-action',
-          title: 'Ver',
-          icon: '/icons/ver.png'
+          title: 'Ver'
         }
       ],
       data: {
         url: `${URI}/app`
       },
       vibrate: [
-        500,
-        110,
-        500,
-        110,
-        450,
-        110,
+        100,
         200,
-        110,
-        170,
-        40,
-        450,
-        110,
+        100,
+        100,
+        75,
+        25,
+        100,
         200,
-        110,
-        170,
-        40,
+        100,
+        500,
+        100,
+        200,
+        100,
         500
       ],
       requireInteraction: true,
