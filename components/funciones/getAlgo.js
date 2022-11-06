@@ -27,17 +27,13 @@ export async function getDay (query) {
   mongoose.connection.close()
   console.log('Closed connection, day info getted')
   const year = new Date().getFullYear()
-  console.log(year)
   const tiempoMas = 59399000
   const actual =
     new Date(year, query.month - 1, query.day).getTime() + tiempoMas
   const fechaActual = actual + 23400000
-  console.log(fechaActual)
   // datos que devuelve
   const datos = await res.filter(fec => fec.fecha === fechaActual)
-  console.log(await datos)
   const data = query
-  console.log(data)
   return {
     props: {
       data,
@@ -55,7 +51,6 @@ export async function getEncuesta () {
   mongoose.connection.close()
   console.log('Closed connection, survey getted')
   const datos = await res
-  console.log(await datos)
   return {
     props: {
       datos
@@ -72,7 +67,6 @@ export async function getEncId (query) {
   mongoose.connection.close()
   console.log('Closed connection, survey id getted')
   const datos = await res.find(ele => ele.id === query.id)
-  console.log(await datos)
   return {
     props: {
       datos

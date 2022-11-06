@@ -108,7 +108,7 @@ export default function CalendarioP ({ datos }) {
             style={
               i === 0
                 ? { gridColumnStart: `${startsOn}` }
-                : { color: 'royalblue' }
+                : { color: 'var(--a)' }
             }
             key={`${monthname}${day}`}
           >

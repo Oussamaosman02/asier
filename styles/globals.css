@@ -18,3 +18,19 @@ a:link {
   color: inherit;
   text-decoration: none;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --n: #fcfafa;
+    --b: #071013;
+    --v: #23b5d3;
+    --a: #0cca4a;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: #fff;
+    background: #000;
+  }
+}
