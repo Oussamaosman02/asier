@@ -15,7 +15,7 @@ export default function fake (req, res) {
     {
       fecha: 1668639599000,
       titulo: 'Examen de Redes',
-      descripcion: 'Hay examen de dns \nEs con soledad las dos primeras',
+      descripcion: 'Hay examen de dns \nEs con Maria Del Carmen las dos primeras',
       tipo: 'examen',
       coments: [
         { name: 'Lucia', id: 387, body: 'Que pasa so mugrosos' },
@@ -49,9 +49,9 @@ export default function fake (req, res) {
     {
       fecha: 1669589999000,
       fechaString: '2022-11-27',
-      titulo: 'Tarea',
+      titulo: 'Tarea de GBD',
       descripcion:
-        'Entregar el trabajo de base de dato\nReminder: tiene que ser con su prototipo',
+        'Entregar el trabajo de base de datos\nReminder: tiene que ser con su prototipo',
       tipo: 'tarea',
       coments: [
         { name: 'amalio', id: 387, body: 'Que pasa so mugrosos' },
@@ -62,8 +62,8 @@ export default function fake (req, res) {
     {
       fecha: 1668639599000,
       fechaString: '2022-11-16',
-      titulo: 'Cumple del Charly',
-      descripcion: 'Es el cumple del charly\nRegalale un mechero',
+      titulo: 'Cumple de Victor',
+      descripcion: 'Es el cumple de Victor\nRegalale un mechero',
       tipo: 'otro',
       coments: [
         { name: 'Fede', id: 387, body: 'Que pasa so mugrosos' },
@@ -88,7 +88,7 @@ export default function fake (req, res) {
       fecha: 1668466799000,
       fechaString: '2022-11-14',
       titulo: 'NOTAs',
-      descripcion: 'Este dia dan las notas\nSaty tuned',
+      descripcion: 'Este dia dan las notas\nStay tuned',
       tipo: 'otro',
       coments: [
         { name: 'Marcos', id: 387, body: 'Que pasa so mugrosos' },

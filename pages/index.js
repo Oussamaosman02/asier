@@ -2,12 +2,13 @@ import React, { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import css from 'styles/indice.module.css'
+import Cookies from 'js-cookie'
 
 export default function Home () {
   const inpnombre = useRef()
   const inpcontra = useRef()
   const rut = useRouter()
-
+  const nombre = Cookies.get('nombre')
   async function handleSubmit () {
     const name = inpnombre.current.value
     const pass = inpcontra.current.value
@@ -31,9 +32,14 @@ export default function Home () {
     <div className={css.container}>
       <h2>La <span>web</span>/<span>app</span> de ASIR</h2>
       <hr />
-      <Link href='/demo'>
-        <button className={css.but}>Demo</button>
-      </Link>
+      {
+        nombre !== undefined &&
+        (
+          <Link href='/app'>
+            <button className={css.but}>App</button>
+          </Link>
+        )
+      }
       <form
         className={css.form}
         onSubmit={e => {

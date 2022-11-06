@@ -15,7 +15,7 @@ export default function DiaDemo ({ data, datos }) {
       </h2>
       <hr />
       <h3>Eventos</h3>
-      <div>{datoss.map(dat => handleEvento(dat))}</div>
+      <div className={css.monthday}>{datoss.map(dat => handleEvento(dat))}</div>
       <Link href='/demo'>
         <a>
           <button className={css.but}>Volver</button>

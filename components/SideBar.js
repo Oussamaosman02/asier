@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import css from 'styles/side.module.css'
-export default function SideBar ({ isOpen, closeModal, admin, inicio }) {
+export default function SideBar ({ isOpen, closeModal, admin }) {
   function closeAlgo (e) {
     e.preventDefault()
     e.stopPropagation()
@@ -24,46 +24,32 @@ export default function SideBar ({ isOpen, closeModal, admin, inicio }) {
         >
           X
         </button>
-        {(inicio !== undefined)
-          ? (
-            <ul>
+        <ul>
+          <li onClick={e => closeAlgo(e)}>
+            <Link href='/app'><a>App</a></Link>
+          </li>
+          {(admin !== undefined)
+            ? (
               <li onClick={e => closeAlgo(e)}>
-                <Link href='/app'><a>App</a></Link>
-              </li>
-              {(admin !== undefined)
-                ? (
-                  <li onClick={e => closeAlgo(e)}>
-                    <Link href='/app/admin'><a>Admin</a></Link>
-                  </li>)
-                : null}
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/app/curso/avisos'><a>Avisos</a></Link>
-              </li>
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/app/curso/calendario'><a>Calendario</a></Link>
-              </li>
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/app/curso/examenes'><a>Exámenes</a></Link>
-              </li>
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/app/curso/tareas'><a>Tareas</a></Link>
-              </li>
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/app/curso/encuestas'><a>Encuesta</a></Link>
-              </li>
-            </ul>
-            )
-          : (
-            <ul>
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/'><a>Home</a></Link>
-              </li>
-              <li onClick={e => closeAlgo(e)}>
-                <Link href='/demo'><a>Demo</a></Link>
-              </li>
-            </ul>
-            )}
-
+                <Link href='/app/admin'><a>Admin</a></Link>
+              </li>)
+            : null}
+          <li onClick={e => closeAlgo(e)}>
+            <Link href='/app/curso/avisos'><a>Avisos</a></Link>
+          </li>
+          <li onClick={e => closeAlgo(e)}>
+            <Link href='/app/curso/calendario'><a>Calendario</a></Link>
+          </li>
+          <li onClick={e => closeAlgo(e)}>
+            <Link href='/app/curso/examenes'><a>Exámenes</a></Link>
+          </li>
+          <li onClick={e => closeAlgo(e)}>
+            <Link href='/app/curso/tareas'><a>Tareas</a></Link>
+          </li>
+          <li onClick={e => closeAlgo(e)}>
+            <Link href='/app/curso/encuestas'><a>Encuesta</a></Link>
+          </li>
+        </ul>
       </nav>
     </div>
   )

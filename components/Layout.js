@@ -10,9 +10,7 @@ export default function Layout ({ children }) {
   const admin = Cookies.get('admin')
   const name = Cookies.get('nombre')
   const rut = useRouter()
-  if (name && rut.pathname === '/') {
-    rut.push('/app')
-  } else if (name) {
+  if (name) {
     return (
       <>
         <Head>
@@ -24,7 +22,7 @@ export default function Layout ({ children }) {
               x
             </button>
             <h1>ASIeR {name && (<><span>x</span> {name}</>)}</h1>
-            <SideBar admin={admin} inicio={name} isOpen={isOpen} closeModal={closeModal} />
+            <SideBar admin={admin} isOpen={isOpen} closeModal={closeModal} />
           </header>
           <div className={css.container}>{children}</div>
         </div>
