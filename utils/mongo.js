@@ -1,7 +1,5 @@
 import mongoose, { Schema, model, models } from 'mongoose'
-import { config } from 'dotenv'
 // mnogo conf
-config()
 const string = process.env.MONGO_URI
 export const mongoConn = async () => mongoose.connect(string)
 

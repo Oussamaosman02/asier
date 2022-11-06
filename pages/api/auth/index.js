@@ -1,11 +1,9 @@
 import mongoose from 'mongoose'
 import { User, mongoConn } from 'utils/mongo'
-import jwt from 'jsonwebtoken'
 import cookie from 'cookie'
 
 export default async function CreateUser (req, res) {
   const registro = process.env.REGISTRAR
-  const secret = process.env.JWT_SECRET
   console.log(registro)
   const resp = req.body
   console.log('Connecting for adding valid user')
@@ -16,8 +14,7 @@ export default async function CreateUser (req, res) {
       await User.create(resp)
       mongoose.connection.close()
       console.log('Closed connection, new user added')
-      const jwebt = jwt.sign(registro, secret)
-      const cook = cookie.serialize('admin', jwebt, {
+      const cook = cookie.serialize('admin', registro, {
         httpOnly: false,
         sameSite: 'Strict',
         secure: process.env.NODE_ENV === 'production',
@@ -39,8 +36,7 @@ export default async function CreateUser (req, res) {
         res.json({ problema: 'No se ha podido iniciar sesión' })
       } else {
         mongoose.connection.close()
-        const jwebt = jwt.sign(usuario, secret)
-        const cook = cookie.serialize('admin', jwebt, {
+        const cook = cookie.serialize('admin', usuario, {
           httpOnly: false,
           sameSite: 'Strict',
           secure: process.env.NODE_ENV === 'production',

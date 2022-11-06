@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { useRouter } from 'next/router'
-import Cookies from 'js-cookie'
 import css from 'styles/admin.module.css'
 
 export default function Administrator () {
@@ -23,7 +22,6 @@ export default function Administrator () {
       if (prob.problema) {
         alert(prob.problema)
       } else if (prob.exit) {
-        Cookies.set('admin', true)
         rut.push('/app/admin')
         alert(`Bienvenido ${user}`)
       }

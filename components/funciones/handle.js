@@ -22,7 +22,7 @@ export default function handleEvento (dat, tipo) {
             <p>
               {descripcion.map((desc, i) => {
                 return (
-                  <Fragment key={desc + '' + i + '' + dat.titulo}>
+                  <Fragment key={desc + '' + i + dat.id + '' + dat.titulo}>
                     {desc}
                     <br />
                   </Fragment>
@@ -44,7 +44,7 @@ export default function handleEvento (dat, tipo) {
             <p>
               {descripcion.map((desc, i) => {
                 return (
-                  <Fragment key={desc + '' + i + '' + dat.titulo}>
+                  <Fragment key={desc + '' + i + dat.id + '' + dat.titulo}>
                     {desc}
                     <br />
                   </Fragment>

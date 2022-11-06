@@ -79,7 +79,7 @@ export default function Admin () {
         <h4 className={css.container}>
           No debes estar aquí!!
         </h4>
-        <Link href='/'>
+        <Link href='/app'>
           <button className={css.but}>
             Ir a casa
           </button>
