@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import css from 'styles/side.module.css'
-export default function SideBar({ isOpen, closeModal, admin }) {
-  function closeAlgo(e) {
+export default function SideBar ({ isOpen, closeModal, admin }) {
+  function closeAlgo (e) {
     e.preventDefault()
     e.stopPropagation()
     setTimeout(closeModal, 750)
