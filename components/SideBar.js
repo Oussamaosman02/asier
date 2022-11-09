@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import css from 'styles/side.module.css'
-export default function SideBar ({ isOpen, closeModal, admin }) {
-  function closeAlgo (e) {
+export default function SideBar({ isOpen, closeModal, admin }) {
+  function closeAlgo(e) {
     e.preventDefault()
     e.stopPropagation()
     setTimeout(closeModal, 750)
@@ -11,7 +11,7 @@ export default function SideBar ({ isOpen, closeModal, admin }) {
   return (
     <div
       className={clases.join(' ')} onClick={
-         closeModal
+        closeModal
       }
     >
       <nav className={css.modalContainer} onClick={e => e.stopPropagation()}>
@@ -19,7 +19,7 @@ export default function SideBar ({ isOpen, closeModal, admin }) {
         <hr />
         <button
           className={css.modalClose} onClick={
-           closeModal
+            closeModal
           }
         >
           X
@@ -51,6 +51,9 @@ export default function SideBar ({ isOpen, closeModal, admin }) {
           </li>
           <li onClick={e => closeAlgo(e)}>
             <Link href='/index.pdf'><a>Docs</a></Link>
+          </li>
+          <li onClick={e => closeAlgo(e)}>
+            <a href='https://github.com/Oussamaosman02/asier' target='_BLANK' rel='noreferre noopener'>GitHub</a>
           </li>
         </ul>
       </nav>
