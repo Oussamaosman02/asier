@@ -53,7 +53,7 @@ export default function SideBar({ isOpen, closeModal, admin }) {
             <Link href='/index.pdf'><a>Docs</a></Link>
           </li>
           <li onClick={e => closeAlgo(e)}>
-            <a href='https://github.com/Oussamaosman02/asier' target='_BLANK' rel='noreferre noopener'>GitHub</a>
+            <a href='https://github.com/Oussamaosman02/asier' target='_blank' rel='noreferrer noopener'>GitHub</a>
           </li>
         </ul>
       </nav>
