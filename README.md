@@ -17,10 +17,12 @@ npm install
 npm run vapid > vapid.txt
 ```
 
-Create a `.env` file, and put the public key, private key generated from the previous step
-Also add a mongoDB secure url to this `.env` file and the DATA_URL will include your page url, it can be localhost:3000
+Create a `.env` file, and put the public key and private key generated from the previous step.
 
-Other things to add to this file is REGISTRAR, for allowing or not to register new admin users,PASSWORD for the autentication password for regular users
+Also add a mongoDB secure url to this `.env` file.
+
+Other things to add to this file is REGISTRAR, for allowing or not to register new admin users, PASSWORD for the autentication password for regular users and the DATA_URL will include your page url, it can be localhost:3000.
+
 ```
 WEB_PUSH_EMAIL=user@example.com
 WEB_PUSH_PRIVATE_KEY=<vapid-private-key>
