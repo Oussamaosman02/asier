@@ -1,7 +1,7 @@
 'use strict'
 
 self.addEventListener('push', function (event) {
-  const URI = 'https://asier-webpush-project.vercel.app'
+  const URI = 'https://asier.creal.es'
   const data = JSON.parse(event.data.text())
   event.waitUntil(
     registration.showNotification(data.title, {
