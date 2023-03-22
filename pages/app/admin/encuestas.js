@@ -85,7 +85,7 @@ export default function Encuestas () {
             <input
               key={en + '' + i}
               type='text'
-              placeholder={`Opcion ${i + 1}`}
+              placeholder={`Opción ${i + 1}`}
             />
           )
         })}

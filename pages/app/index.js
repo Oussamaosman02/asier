@@ -64,7 +64,7 @@ export default function Index ({ datos }) {
       <br />
       <Calendario datos={datos} />
       <br />
-      <h2>Examenes</h2>
+      <h2>Exámenes</h2>
       <ul>
         <Examenes espec='examen' datos={datos} />
       </ul>
